@@ -329,7 +329,7 @@ function makeMove(number) {
 
     // to save in javascript memory the new position of the piece
     if (turn) {
-        if (selectedPiece.isKing) {
+        if (selectedPiece.isKing) {                                     // these are two classes: red-piece and king
             cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="red-piece king" id="${selectedPiece.pieceId}"></p>`;
             redsPieces = document.querySelectorAll(".red-piece"); /* why am I recalculating this? */
         } else {
@@ -338,7 +338,7 @@ function makeMove(number) {
         }
     } else {   
         if (selectedPiece.isKing) {
-            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"></p>`;   //WARNING: you must use the "backtick" ` symbol
+            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"></p>`;   //WARNING: must use the "backtick" ` symbol
             blacksPieces = document.querySelectorAll(".black-piece"); 
         } else {
             cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece" id="${selectedPiece.pieceId}"></p>`;
@@ -437,6 +437,6 @@ function changePlayer() {
 }
 
 
-//starting point: the cycle begins once the page has loadeds
+//starting point: the cycle begins once the page has loaded
 console.log("start of the program\n");
 givePiecesEventListeners();
