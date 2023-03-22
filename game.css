@@ -2,14 +2,14 @@
     margin: auto;
 }
 
-body {
+/*body {
     background-color: hsl(2, 74%, 54%);
     background-image:
     radial-gradient(rgb(216, 145, 38) 9px, transparent 10px),
     repeating-radial-gradient(rgb(216, 145, 38) 0, rgb(216, 145, 38) 4px, transparent 5px, transparent 20px, rgb(216, 145, 38) 21px, rgb(216, 145, 38) 25px, transparent 26px, transparent 50px);
     background-size: 30px 30px, 90px 90px;
     background-position: 0 0;
-}
+}*/
 
 table {
     border-style: solid;
