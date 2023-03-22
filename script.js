@@ -14,7 +14,7 @@ const board = [ /*64 item array*/
 
 
 //why am I using a variable?
-let findPiece = function(pieceId) {
+let findPiece = function(pieceId) { //La funzione restituisce, dato l'id html del pezzo, il corrispondente indice nella damiera di back-end
     let parsed = parseInt(pieceId);
     return board.indexOf(parsed);
 }
@@ -50,7 +50,7 @@ let selectedPiece = {
     fourteenthSpace: false,
     eighteenthSpace: false,
     // +7/+9 for reds, -7/-9 for blacks
-    // we didnt' create two variables because when a piece become kin	g, regardless
+    // we didnt' create two variables because when a piece become king, regardless
     // of its color, it can move in all the four positions 
     minusSeventhSpace: false,
     minusNinthSpace: false,
@@ -166,7 +166,7 @@ function isPieceKing() {
     getAvailableSpaces();
 }
 
-function getAvailableSpaces() {
+function getAvailableSpaces() { //NECESSARIO AGGIUNGERE UN CONTROLLO PER EVITARE DI POTER MUOVERSI SENZA MANGIARE SE UNA MANGIATA E' DISPONIBILE
     //we are using the string equality operator
     if (board[selectedPiece.indexOfBoardPiece + 7] === null /*the cell is available (id == null -> no piece here)*/ 
         && cells[selectedPiece.indexOfBoardPiece + 7].classList.contains("white") !== true) { /*never go on white cells: this is 

@@ -9,14 +9,25 @@
     <title>Let's FIGHT!</title>
 </head>
 <body>
+    <div class="desktop">
+        <div class="red-turn-text">
+            Reds turn
+        </div>
+        <br>
+        <!--<p id="divider">|</p>--> <!-- Commento perchè mi fa schifo sto divider-->
+        <div class="black-turn-text">
+            Blacks turn
+        </div>
+    </div>
     <main>
+        
         <table>  <!-- the structure of the checkers board: 8 x 8. The pieces moves only over "black" cells -->
             <!-- we use <p> tag to "wrap" the red pieces, and <spam> for the white ones. Could we use <spam> 
                 for both of them? -->
             
-            <tr>  
-                <td class = "white"></td> 
-                <td class = "black"><p class="red-piece" id = 0></p></td> 
+            <tr>  <!-- Riga della table, con dentro gli elementi, ognuno una casella della damiera-->
+                <td class = "white"></td> <!-- Casella  bianca, sempre vuota-->
+                <td class = "black"><p class="red-piece" id = 0></p></td>  
                 <td class = "white"></td>
                 <td class = "black"><p class="red-piece" id = 1></p></td> 
                 <td class = "white"></td> 
@@ -96,15 +107,7 @@
                 <td class = "white"></td>
             </tr>
         </table>
-        <div class="desktop">
-            <div class="red-turn-text">
-                Reds turn
-            </div>
-            <p id="divider">|</p>
-            <div class="black-turn-text">
-                Blacks turn
-            </div>
-        </div>
+        
     </main>
 </body>
 </html>

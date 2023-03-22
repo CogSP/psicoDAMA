@@ -23,7 +23,7 @@ nav {
     padding: 20px 8%;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /*I tried space-between but the 4 options were not in the upper right conrner*/
+    justify-content: flex-end; /*I tried space-between but the 4 options were not in the upper right corner*/
 }
 
 nav ul li {
