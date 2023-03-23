@@ -1,20 +1,20 @@
+
+
 * {   
     margin: auto;
 }
 
-/*body {
-    background-color: hsl(2, 74%, 54%);
-    background-image:
-    radial-gradient(rgb(216, 145, 38) 9px, transparent 10px),
-    repeating-radial-gradient(rgb(216, 145, 38) 0, rgb(216, 145, 38) 4px, transparent 5px, transparent 20px, rgb(216, 145, 38) 21px, rgb(216, 145, 38) 25px, transparent 26px, transparent 50px);
-    background-size: 30px 30px, 90px 90px;
-    background-position: 0 0;
-}*/
+
+body {
+    background-image: url("grayscale.jpg.avif")
+    /* Non fa schifo ma si potrebbe fare molto di meglio, va o aggiustat questa immagine o trovata una più adatta*/
+} 
 
 table {
     border-style: solid;
     border-width: 12px;
     border-color: rgb(70, 69, 69);
+    /* La table dovrebbe rimanere fissa al centro se io scorro la pagina ma non ci riesco*/
 }
 
 main {
@@ -28,28 +28,35 @@ main {
 
 
 .desktop {
+    /* Anche lui dovrebbe rimanere fermo mentre la pagina scorre, cosa che per ora non riesco a settare*/
     margin: 0;
     width: 20%;
     display: flex; 
     /*justify-content: space-between;*/
 }
 .desktop div{
+    
     border: 2px lightgrey solid;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: white;
     font-size:20px;
 }
 
 
-.red-turn-text {
+.white-turn-text {
     text-align: center;
     color: black;
     font-family: "open sans";
-    font-size: 30px;
+    padding:2px;
+    font-size: 25px;
 }
 
 .black-turn-text {
     text-align: center;
     font-family: "open sans";
-    font-size: 30px;
+    font-size: 25px;
+    padding: 2px;
     color: lightgray;
 }
 
@@ -67,37 +74,58 @@ td {   /* these attributes apply both to black and white cells */
 
 .black {
     background-color: #808080; /* we consider this color as black */
-    border: 1px solid lightgrey
+    border: 1px solid lightgrey;
+    
 }
-
 
 .black-piece {
     width: 20px;
     height: 20px;
     padding: 12px;
     background-color: black;
-    border: 1px solid white;
+    border: 1px solid #808080; 
     border-radius: 50px;
+    
 }
 
 
-.red-piece {
+.white-piece {
     width: 20px;
     height: 20px;
     padding: 12px;
     background-color: rgb(252, 249, 249);
-    border: 1px solid white;
+    border: 1px solid #808080;
     border-radius: 50px;
-}
-
-.king.black-piece {  /*if you are both king and black piece*/
-    background-color: purple;
+    
     
 }
 
-.king.red-piece {
-    background-color: orange;
+@keyframes become_black_king { /* Animazioni matte per quando un pezzo diventa Re, colori da decidere*/
+    0% {background-color: rgb(0, 0, 0);}
+    50% {background-color: goldenrod;}
+    100% {background-color: black;}
+    /* Sarebbe figo aggiungere il simbolino di una corona dentro alla pedina quando diventa re, non dovrebbe essere troppo difficile in teoria*/
+}
 
+@keyframes become_white_king {
+    0% {background-color: white;}
+    50% {background-color: rgba(163, 0, 133, 0.848);}
+    100% {background-color: white;}
+    
+}
+
+.king.black-piece {  /*if you are both king and black piece*/
+    /* background-color: purple; */
+    animation-name: become_black_king;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+.king.white-piece {
+    /* background-color: orange; */
+    animation-name: become_white_king;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
 }
 
 p {

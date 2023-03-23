@@ -22,18 +22,18 @@ let findPiece = function(pieceId) { //La funzione restituisce, dato l'id html de
 
 // references to the web html page (DOM references)
 const cells = document.querySelectorAll("td"); /* list of all the "td"s in the  html file*/
-let redsPieces = document.querySelectorAll(".red-piece"); /* does it work? */
+let whitesPieces = document.querySelectorAll(".white-piece"); /* does it work? */
 let blacksPieces = document.querySelectorAll(".black-piece"); /* does it work? */
-const redTurnText = document.querySelectorAll(".red-turn-text");
+const whiteTurnText = document.querySelectorAll(".white-turn-text");
 const blackTurnText = document.querySelectorAll(".black-turn-text");
 const divider = document.querySelector("#divider")
 
 
 /* players properties: game state */
-let turn = true;  /* true = red, false = black*/ 
-let redScore = 12; // how many pieces the red player currently has
+let turn = true;  /* true = white, false = black*/ 
+let whiteScore = 12; // how many pieces the white player currently has
 let blackScore = 12;
-let playerPieces;  // if its red's turn playerPieces = redsPieces, otherwise 
+let playerPieces;  // if its white's turn playerPieces = whitesPieces, otherwise 
 //playerPieces = blacksPieces
 
 
@@ -49,7 +49,7 @@ let selectedPiece = {
     ninthSpace: false,
     fourteenthSpace: false,
     eighteenthSpace: false,
-    // +7/+9 for reds, -7/-9 for blacks
+    // +7/+9 for whites, -7/-9 for blacks
     // we didnt' create two variables because when a piece become king, regardless
     // of its color, it can move in all the four positions 
     minusSeventhSpace: false,
@@ -66,12 +66,12 @@ let selectedPiece = {
 function givePiecesEventListeners() {
 
     console.log("we have " + cells.length + " cells\n");
-    console.log("red has: " + redsPieces.length + " pieces, while black has: " + blacksPieces.length + " pieces\n");
+    console.log("white has: " + whitesPieces.length + " pieces, while black has: " + blacksPieces.length + " pieces\n");
 
     if (turn) {
-        console.log("red's turn");
-        for (let i = 0; i < redsPieces.length; i++) {
-            redsPieces[i].addEventListener("click", getPlayerPieces);
+        console.log("white's turn");
+        for (let i = 0; i < whitesPieces.length; i++) {
+            whitesPieces[i].addEventListener("click", getPlayerPieces);
         }
     } else {
         console.log("black's turn");
@@ -89,10 +89,10 @@ function givePiecesEventListeners() {
 /* here starts the functions chain for when we click a piece: */
 
 function getPlayerPieces() {
-    //reds turn
+    //whites turn
     if (turn) {
-        console.log("a red piece has been clicked");
-        playerPieces = redsPieces;
+        console.log("a white piece has been clicked");
+        playerPieces = whitesPieces;
     } else {
         console.log("a black piece has been clicked");
         playerPieces = blacksPieces;
@@ -116,8 +116,8 @@ function removeCellonclick() {
 // RESET THE PIECES THAT WAS SELECTED BEFORE??? 
 function resetBorders() {
     for (let i = 0; i < playerPieces.length; i++) {
-        playerPieces[i].style.border = "1px solid white";
-    }
+        playerPieces[i].style.border = "1px solid #808080";
+    } 
     resetSelectedPieceProperties();
     getSelectedPiece(); //here we start operating on the current selected piece
 }
@@ -195,7 +195,7 @@ function getAvailableSpaces() { //NECESSARIO AGGIUNGERE UN CONTROLLO PER EVITARE
 
 
 // IS THERE A WAY TO ELMINATE THIS IF-ELSE BRANCH, DOING JUST ONE CODE FOR BOTH THE TEAMS?
-// THE PROBLEM IS THAT WE NEED TO DIFFERENTIATE BETWEEN ID >= 12 (BLACKS) AND < 12 (REDS)
+// THE PROBLEM IS THAT WE NEED TO DIFFERENTIATE BETWEEN ID >= 12 (BLACKS) AND < 12 (WHITES)
 function checkAvailableJumpSpaces() {
     
     if (turn) {
@@ -252,7 +252,7 @@ function checkPieceConditions() {
     if (selectedPiece.isKing) {
         givePieceBorder();
     } else {
-        //reds turn, the piece is not a king: it can't move -7/-9, so we set this variables to false 
+        //whites turn, the piece is not a king: it can't move -7/-9, so we set this variables to false 
         if (turn) {
             selectedPiece.minusSeventhSpace = false;
             selectedPiece.minusNinthSpace = false;
@@ -329,12 +329,12 @@ function makeMove(number) {
 
     // to save in javascript memory the new position of the piece
     if (turn) {
-        if (selectedPiece.isKing) {                                     // these are two classes: red-piece and king
-            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="red-piece king" id="${selectedPiece.pieceId}"></p>`;
-            redsPieces = document.querySelectorAll(".red-piece"); /* why am I recalculating this? */
+        if (selectedPiece.isKing) {                                     // these are two classes: white-piece and king
+            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"></p>`;
+            whitesPieces = document.querySelectorAll(".white-piece"); /* why am I recalculating this? */
         } else {
-            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="red-piece" id="${selectedPiece.pieceId}"></p>`;
-            redsPieces = document.querySelectorAll(".red-piece");
+            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece" id="${selectedPiece.pieceId}"></p>`;
+            whitesPieces = document.querySelectorAll(".white-piece");
         }
     } else {   
         if (selectedPiece.isKing) {
@@ -374,7 +374,7 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
         }
         if (turn == false && selectedPiece.pieceId >= 12) {
             cells[removePiece].innerHTML = "";
-            redScore--;
+            whiteScore--;
         }
     }
 
@@ -387,8 +387,8 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
 function removeEventListeners() {
 
     if (turn) {
-        for (let i = 0; i < redsPieces.length; i++) {
-            redsPieces[i].removeEventListener("click", getPlayerPieces);
+        for (let i = 0; i < whitesPieces.length; i++) {
+            whitesPieces[i].removeEventListener("click", getPlayerPieces);
         }
     } else {
         for (let i = 0; i < blacksPieces.length; i++) {
@@ -403,16 +403,16 @@ function removeEventListeners() {
 function checkForWin() {
     if (blackScore === 0) {
         divider.style.display = "none";
-        for (let i = 0; i < redTurnText.length; i++) {
-            redTurnText[i].style.color = "black";
+        for (let i = 0; i < whiteTurnText.length; i++) {
+            whiteTurnText[i].style.color = "black";
             blackTurnText[i].style.display = "none";
-            redTurnText[i].textContent = "RED WINS!";
+            whiteTurnText[i].textContent = "WHITE WINS!";
         }
-    } else if (redScore === 0) {
+    } else if (whiteScore === 0) {
         divider.style.display = "none";
         for (let i = 0; i < blackTurnText.length; i++) {            
             blackTurnText[i].style.color = "black";
-            redTurnText[i].style.display = "none";
+            whiteTurnText[i].style.display = "none";
             blackTurnText[i].textContent = "BLACK WINS!";
         }
     }
@@ -422,15 +422,15 @@ function checkForWin() {
 function changePlayer() {
     if (turn) {
         turn = false;
-        for (let i = 0; i < redTurnText.length; i++) {
-            redTurnText[i].style.color = "lightGrey";
+        for (let i = 0; i < whiteTurnText.length; i++) {
+            whiteTurnText[i].style.color = "lightGrey";
             blackTurnText[i].style.color = "black";
         }
     } else {
         turn = true;
         for (let i = 0; i < blackTurnText.length; i++) {
             blackTurnText[i].style.color = "lightGrey";
-            redTurnText[i].style.color = "black";
+            whiteTurnText[i].style.color = "black";
         }
     }
     givePiecesEventListeners();

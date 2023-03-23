@@ -10,8 +10,8 @@
 </head>
 <body>
     <div class="desktop">
-        <div class="red-turn-text">
-            Reds turn
+        <div class="white-turn-text">
+            Whites turn
         </div>
         <br>
         <!--<p id="divider">|</p>--> <!-- Commento perchè mi fa schifo sto divider-->
@@ -22,37 +22,37 @@
     <main>
         
         <table>  <!-- the structure of the checkers board: 8 x 8. The pieces moves only over "black" cells -->
-            <!-- we use <p> tag to "wrap" the red pieces, and <spam> for the white ones. Could we use <spam> 
+            <!-- we use <p> tag to "wrap" the white pieces, and <spam> for the white ones. Could we use <spam> 
                 for both of them? -->
             
             <tr>  <!-- Riga della table, con dentro gli elementi, ognuno una casella della damiera-->
                 <td class = "white"></td> <!-- Casella  bianca, sempre vuota-->
-                <td class = "black"><p class="red-piece" id = 0></p></td>  
+                <td class = "black"><p class="white-piece" id = 0></p></td>  
                 <td class = "white"></td>
-                <td class = "black"><p class="red-piece" id = 1></p></td> 
+                <td class = "black"><p class="white-piece" id = 1></p></td> 
                 <td class = "white"></td> 
-                <td class = "black"><p class="red-piece" id = 2></p></td> 
+                <td class = "black"><p class="white-piece" id = 2></p></td> 
                 <td class = "white"></td> 
-                <td class = "black"><p class="red-piece" id = 3></p></td>
+                <td class = "black"><p class="white-piece" id = 3></p></td>
             </tr>
             <tr>  
-                <td class = "black"><p class="red-piece" id = 4></p></td>
+                <td class = "black"><p class="white-piece" id = 4></p></td>
                 <td class = "white"></td> 
-                <td class = "black"><p class="red-piece" id = 5></p></td> 
+                <td class = "black"><p class="white-piece" id = 5></p></td> 
                 <td class = "white"></td> 
-                <td class = "black"><p class="red-piece" id = 6></p></td> 
+                <td class = "black"><p class="white-piece" id = 6></p></td> 
                 <td class = "white"></td> 
-                <td class = "black"><p class="red-piece" id = 7></p></td> 
+                <td class = "black"><p class="white-piece" id = 7></p></td> 
                 <td class = "white"></td>
             </tr>
             <tr>  
                 <td class = "white"></td> 
-                <td class = "black"><p class= "red-piece" id = 8></p></td> 
+                <td class = "black"><p class= "white-piece" id = 8></p></td> 
                 <td class = "white"></td> 
-                <td class = "black"><p class= "red-piece" id = 9></p></td> 
+                <td class = "black"><p class= "white-piece" id = 9></p></td> 
                 <td class = "white"></td> 
-                <td class = "black"><p class= "red-piece" id = 10></p></td> 
-                <td class = "white"></td> <td class = "black"><p class="red-piece" id = 11></p></td>
+                <td class = "black"><p class= "white-piece" id = 10></p></td> 
+                <td class = "white"></td> <td class = "black"><p class="white-piece" id = 11></p></td>
             </tr>
             <tr>  
                 <td class = "black"></td> 
@@ -75,7 +75,7 @@
                 <td class = "black"></td>
             </tr>
             <tr> 
-                <!-- the tutorial used <span> instead of <p> to differenciate between red and black-->
+                <!-- the tutorial used <span> instead of <p> to differenciate between white and black-->
                 <!-- when I do that, the black piecees seem beans--> 
                 <td class = "black"><p class = "black-piece" id = 12></p></td> 
                 <td class = "white"></td> 
