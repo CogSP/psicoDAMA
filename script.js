@@ -198,11 +198,11 @@ function getAvailableSpaces() { //NECESSARIO AGGIUNGERE UN CONTROLLO PER EVITARE
             selectedPiece.minusNinthSpace = true; 
     }
     
-    //Se uno
+    
     checkAvailableJumpSpaces();
 }
 
-
+//HA ANCORA DEI BUG!!! (nel caso in cui dei re possano mangiare)
 function YouGottaEat(index){
     if (turn) {
         if (board[index+ 14] === null 
@@ -220,6 +220,7 @@ function YouGottaEat(index){
             found = true;
         }
         if (board[index- 14] === null 
+        && cells[index].classList.contains("king")
         && cells[index - 14].classList.contains("white") !== true
         && board[index -7] !== null
         && board[index - 7] >= 12) {
@@ -227,6 +228,7 @@ function YouGottaEat(index){
             found = true;
         }
         if (board[index - 18] === null 
+        && cells[index].classList.contains("king")
         && cells[index - 18].classList.contains("white") !== true
         && board[index -9] !== null
         && board[index - 9] >= 12) {
@@ -235,15 +237,17 @@ function YouGottaEat(index){
         }
     } else {
         if (board[index + 14] === null 
+        && cells[index].classList.contains("king")
         && cells[index + 14].classList.contains("white") !== true
         && board[index + 7] < 12 && board[index + 7] !== null) {
-            console.log("index = " + index.toString());
+            console.log("indexKing = " + index.toString());
             found = true;
         }
         if (board[index + 18] === null 
+        && cells[index].classList.contains("king")
         && cells[index+ 18].classList.contains("white") !== true
         && board[index + 9] < 12 && board[index + 9] !== null) {
-            console.log("index = " + index.toString());
+            console.log("indexKing = " + index.toString());
             found = true;
         }
         if (board[index - 14] === null && cells[index - 14].classList.contains("noPieceHere") !== true
@@ -430,7 +434,7 @@ function makeMove(number) {
     // to save in javascript memory the new position of the piece
     if (turn) {
         if (selectedPiece.isKing) {                                     // these are two classes: white-piece and king
-            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"></p>`;
+            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
             whitesPieces = document.querySelectorAll(".white-piece"); /* why am I recalculating this? */
         } else {
             cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece" id="${selectedPiece.pieceId}"></p>`;
@@ -438,7 +442,7 @@ function makeMove(number) {
         }
     } else {   
         if (selectedPiece.isKing) {
-            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"></p>`;   //WARNING: must use the "backtick" ` symbol
+            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`;   //WARNING: must use the "backtick" ` symbol
             blacksPieces = document.querySelectorAll(".black-piece"); 
         } else {
             cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece" id="${selectedPiece.pieceId}"></p>`;

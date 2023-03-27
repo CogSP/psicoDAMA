@@ -1,6 +1,4 @@
 body{
-
-
 background-size: 300% 300%;
 background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
 -webkit-animation: AnimateBG 5s ease infinite;
@@ -144,19 +142,19 @@ td {   /* these attributes apply both to black and white cells */
     
 }
 
-.king.black-piece {  /*if you are both king and black piece*/
-    /* background-color: purple; */
+ .king.black-piece { 
+    background-color: purple; 
     animation-name: become_black_king;
     animation-iteration-count: infinite;
     animation-duration: 1s;
 }
 
-.king.white-piece {
-    /* background-color: orange; */
+.king.white-piece { 
+    background-color: orange;
     animation-name: become_white_king;
     animation-iteration-count: infinite;
-    animation-duration: 1s;
-}
+    animation-duration: 1s; 
+ } 
 
 p {
     display: inline-block;
