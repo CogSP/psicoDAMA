@@ -11,7 +11,7 @@ const board = [ /*64 item array*/
     null, 16, null, 17, null, 18, null, 19,
     20, null, 21, null, 22, null, 23, null
 ]
-
+let found = false;
 
 //why am I using a variable?
 let findPiece = function(pieceId) { //La funzione restituisce, dato l'id html del pezzo, il corrispondente indice nella damiera di back-end
@@ -79,6 +79,7 @@ function givePiecesEventListeners() {
             blacksPieces[i].addEventListener("click", getPlayerPieces);
         }
     }
+    
 
     console.log("we gave all the pieces the click event listener\n");
 }
@@ -90,6 +91,7 @@ function givePiecesEventListeners() {
 
 function getPlayerPieces() {
     //whites turn
+  
     if (turn) {
         console.log("a white piece has been clicked");
         playerPieces = whitesPieces;
@@ -97,6 +99,10 @@ function getPlayerPieces() {
         console.log("a black piece has been clicked");
         playerPieces = blacksPieces;
     }
+
+        //Controllo per ogni bianco che non possa mangiare; se un qualsiasi bianco può mangiare
+        //il pezzo selezionato non dove poterlo fare
+    
 
     removeCellonclick();
     resetBorders();
@@ -148,6 +154,7 @@ function getSelectedPiece() {
     console.log("the clicked piece is " + selectedPiece.pieceId + 
         " and it is in position: " + selectedPiece.indexOfBoardPiece + "\n");
     
+   
     isPieceKing();
 }
 
@@ -168,6 +175,7 @@ function isPieceKing() {
 
 function getAvailableSpaces() { //NECESSARIO AGGIUNGERE UN CONTROLLO PER EVITARE DI POTER MUOVERSI SENZA MANGIARE SE UNA MANGIATA E' DISPONIBILE
     //we are using the string equality operator
+
     if (board[selectedPiece.indexOfBoardPiece + 7] === null /*the cell is available (id == null -> no piece here)*/ 
         && cells[selectedPiece.indexOfBoardPiece + 7].classList.contains("white") !== true) { /*never go on white cells: this is 
         important because if the piece is on the edge, +7/+9 will get us on the opposite end of the board, so we use the fact that these cells are white to prevent jumping there*/
@@ -189,62 +197,153 @@ function getAvailableSpaces() { //NECESSARIO AGGIUNGERE UN CONTROLLO PER EVITARE
         cells[selectedPiece.indexOfBoardPiece - 9].classList.contains("white") !== true) {
             selectedPiece.minusNinthSpace = true; 
     }
-
+    
+    //Se uno
     checkAvailableJumpSpaces();
 }
 
 
+function YouGottaEat(index){
+    if (turn) {
+        if (board[index+ 14] === null 
+        && cells[index + 14].classList.contains("white") !== true
+        && board[index + 7] !== null
+        && board[index + 7] >= 12) /*black pieces have id >= 12*/ {
+            console.log("index = " + index.toString());
+            found = true;
+        }
+        if (board[index + 18] === null 
+        && cells[index + 18].classList.contains("white") !== true
+        && board[index + 9] !== null
+        && board[index + 9] >= 12) {
+            console.log("index = " + index.toString());
+            found = true;
+        }
+        if (board[index- 14] === null 
+        && cells[index - 14].classList.contains("white") !== true
+        && board[index -7] !== null
+        && board[index - 7] >= 12) {
+            console.log("index = " + index.toString());
+            found = true;
+        }
+        if (board[index - 18] === null 
+        && cells[index - 18].classList.contains("white") !== true
+        && board[index -9] !== null
+        && board[index - 9] >= 12) {
+            console.log("index = " + index.toString());
+            found = true;
+        }
+    } else {
+        if (board[index + 14] === null 
+        && cells[index + 14].classList.contains("white") !== true
+        && board[index + 7] < 12 && board[index + 7] !== null) {
+            console.log("index = " + index.toString());
+            found = true;
+        }
+        if (board[index + 18] === null 
+        && cells[index+ 18].classList.contains("white") !== true
+        && board[index + 9] < 12 && board[index + 9] !== null) {
+            console.log("index = " + index.toString());
+            found = true;
+        }
+        if (board[index - 14] === null && cells[index - 14].classList.contains("noPieceHere") !== true
+        && board[index - 7] < 12 
+        && board[index - 7] !== null) {
+            console.log("index = " + index.toString());
+            found = true;
+        }
+        if (board[index - 18] === null && cells[index - 18].classList.contains("noPieceHere") !== true
+        && board[index - 9] < 12
+        && board[index - 9] !== null) {
+            console.log("index = " + index.toString());
+            found = true;
+        }
+    }
+}
+
 // IS THERE A WAY TO ELMINATE THIS IF-ELSE BRANCH, DOING JUST ONE CODE FOR BOTH THE TEAMS?
 // THE PROBLEM IS THAT WE NEED TO DIFFERENTIATE BETWEEN ID >= 12 (BLACKS) AND < 12 (WHITES)
 function checkAvailableJumpSpaces() {
-    
+
     if (turn) {
         if (board[selectedPiece.indexOfBoardPiece + 14] === null 
         && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 7] >= 12) /*black pieces have id >= 12*/ {
             selectedPiece.fourteenthSpace = true;
+            // found = true;
+            
         }
         if (board[selectedPiece.indexOfBoardPiece + 18] === null 
         && cells[selectedPiece.indexOfBoardPiece + 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 9] >= 12) {
             selectedPiece.eighteenthSpace = true;
+            // found = true;
+            
         }
         if (board[selectedPiece.indexOfBoardPiece - 14] === null 
         && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 7] >= 12) {
             selectedPiece.minusFourteenthSpace = true;
+            // found = true;
+            
         }
         if (board[selectedPiece.indexOfBoardPiece - 18] === null 
         && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 9] >= 12) {
             selectedPiece.minusEighteenthSpace = true;
+            // found = true;
+           
         }
     } else {
         if (board[selectedPiece.indexOfBoardPiece + 14] === null 
         && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 7] < 12 && board[selectedPiece.indexOfBoardPiece + 7] !== null) {
             selectedPiece.fourteenthSpace = true;
+            // found = true;
+            
         }
         if (board[selectedPiece.indexOfBoardPiece + 18] === null 
         && cells[selectedPiece.indexOfBoardPiece + 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 9] < 12 && board[selectedPiece.indexOfBoardPiece + 9] !== null) {
             selectedPiece.eighteenthSpace = true;
+            // found = true;
+           
         }
         if (board[selectedPiece.indexOfBoardPiece - 14] === null && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("noPieceHere") !== true
         && board[selectedPiece.indexOfBoardPiece - 7] < 12 
         && board[selectedPiece.indexOfBoardPiece - 7] !== null) {
             selectedPiece.minusFourteenthSpace = true;
+            // found = true;
+            
         }
         if (board[selectedPiece.indexOfBoardPiece - 18] === null && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("noPieceHere") !== true
         && board[selectedPiece.indexOfBoardPiece - 9] < 12
         && board[selectedPiece.indexOfBoardPiece - 9] !== null) {
             selectedPiece.minusEighteenthSpace = true;
+            // found = true;
+            
         }
     }
-
+    
+    for(let i = 0; i<64; i+=1){
+        //Va fatta la verifica e in caso settato found a true 
+        if(turn){
+            if(board[i] !== null && board[i] <= 11)
+                YouGottaEat(i);
+        }
+        else{
+            if(board[i] !== null && board[i] >= 12)
+                YouGottaEat(i);
+        }
+    }
+    if(found){ //Se qualche pezzo può mangiare, lui non può muoversi senza farlo!
+        selectedPiece.minusSeventhSpace = false;
+        selectedPiece.minusNinthSpace = false;
+        selectedPiece.ninthSpace = false;
+        selectedPiece.seventhSpace = false;
+    }
     checkPieceConditions();
 }
-
 
 // restrict the movements if the piece is not a king
 function checkPieceConditions() {
@@ -321,7 +420,8 @@ function giveCellsClick() {
 function makeMove(number) {
 
     //remove the piece from the front end because we are moving elsewhere
-   
+    
+    found = false;
     document.getElementById(selectedPiece.pieceId).remove();
 
     cells[selectedPiece.indexOfBoardPiece].innerHTML = "";
@@ -353,6 +453,8 @@ function makeMove(number) {
     } else {
         changeData(indexOfPiece, indexOfPiece + number);
     }
+
+
 }
 
 
@@ -434,6 +536,7 @@ function changePlayer() {
         }
     }
     givePiecesEventListeners();
+
 }
 
 
