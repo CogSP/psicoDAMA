@@ -1,19 +1,49 @@
+body{
+
+
+background-size: 300% 300%;
+background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+-webkit-animation: AnimateBG 5s ease infinite;
+        animation: AnimateBG 5s ease infinite;
+}
+
+@-webkit-keyframes AnimateBG {
+0% {
+  background-position: 0% 50%;
+}
+50% {
+  background-position: 100% 50%;
+}
+100% {
+  background-position: 0% 50%;
+}
+}
+
+@keyframes AnimateBG {
+0% {
+  background-position: 0% 50%;
+}
+50% {
+  background-position: 100% 50%;
+}
+100% {
+  background-position: 0% 50%;
+}
+}
 
 
 * {   
     margin: auto;
 }
 
-
-body {
-    background-image: url("grayscale.jpg.avif")
-    /* Non fa schifo ma si potrebbe fare molto di meglio, va o aggiustat questa immagine o trovata una più adatta*/
-} 
-
 table {
+   
     border-style: solid;
     border-width: 12px;
     border-color: rgb(70, 69, 69);
+    background-color: white;
+
+
     /* La table dovrebbe rimanere fissa al centro se io scorro la pagina ma non ci riesco*/
 }
 
@@ -31,7 +61,7 @@ main {
     /* Anche lui dovrebbe rimanere fermo mentre la pagina scorre, cosa che per ora non riesco a settare*/
     margin: 0;
     width: 20%;
-    display: flex; 
+    display:flex;
     /*justify-content: space-between;*/
 }
 .desktop div{
@@ -73,7 +103,7 @@ td {   /* these attributes apply both to black and white cells */
 }
 
 .black {
-    background-color: #808080; /* we consider this color as black */
+    background-color: #79032e; /* we consider this color as black */
     border: 1px solid lightgrey;
     
 }
@@ -136,11 +166,4 @@ p {
     font-size: 90px;
     margin-left: 15px;
     margin-right: 15px;
-}
-
-table{
-    border: 1px solid lightgray;
-    
-    
-
 }
