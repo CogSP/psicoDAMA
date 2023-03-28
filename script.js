@@ -1,6 +1,10 @@
 /* GAME STATE DATA: declaration of the board, with all the pieces and their
 html's ids */
-
+/*
+TODO:
+    -aggiustare YouGottaEat(), ha problemi quando un re può mangiare
+    -aggiustare il fatto che la corona appare dopo una mossa ai re
+ */
 const board = [ /*64 item array*/
     null, 0, null, 1, null, 2, null, 3,
     4, null, 5, null, 6, null, 7, null,
@@ -11,7 +15,8 @@ const board = [ /*64 item array*/
     null, 16, null, 17, null, 18, null, 19,
     20, null, 21, null, 22, null, 23, null
 ]
-let found = false;
+
+let found = false; //variabile che serve a capire se ci sono pedine che potrebbero mangiare
 
 //why am I using a variable?
 let findPiece = function(pieceId) { //La funzione restituisce, dato l'id html del pezzo, il corrispondente indice nella damiera di back-end
@@ -205,7 +210,9 @@ function getAvailableSpaces() { //NECESSARIO AGGIUNGERE UN CONTROLLO PER EVITARE
 //HA ANCORA DEI BUG!!! (nel caso in cui dei re possano mangiare)
 function YouGottaEat(index){
     if (turn) {
-        if (board[index+ 14] === null 
+        if (
+        index + 9 < 64 && index + 18 < 64 &&
+        board[index+ 14] === null 
         && cells[index + 14].classList.contains("white") !== true
         && board[index + 7] !== null
         && board[index + 7] >= 12) /*black pieces have id >= 12*/ {
@@ -213,13 +220,26 @@ function YouGottaEat(index){
             found = true;
         }
         if (board[index + 18] === null 
+        &&  index + 9 < 64 && index + 18 < 64
         && cells[index + 18].classList.contains("white") !== true
         && board[index + 9] !== null
         && board[index + 9] >= 12) {
             console.log("index = " + index.toString());
             found = true;
         }
-        if (board[index- 14] === null 
+        
+        if(index - 7 >= 0 && index - 14 >=0){
+            console.log("board[index - 14] === null: " + board[index - 14] === null);
+            console.log("cells[index - 14].classList.contains(white) !== true:" + cells[index - 14].classList.contains("white") !== true );
+            console.log("cells[index].classList.contains(king): " + cells[index].classList.contains("king"));
+            console.log("board[index -7] !== null: " + board[index -7] !== null);
+            console.log("board[index - 7] >= 12: " + board[index - 7] >= 12);
+            console.log("\n");
+        }
+        
+        if (
+        index - 7 >= 0 && index - 14 >=0
+        && board[index- 14] === null 
         && cells[index].classList.contains("king")
         && cells[index - 14].classList.contains("white") !== true
         && board[index -7] !== null
@@ -227,16 +247,29 @@ function YouGottaEat(index){
             console.log("index = " + index.toString());
             found = true;
         }
+        if(index - 9 >= 0 && index - 18 >=0){
+        console.log("Condizioni verificate: ");
+        console.log("board[index - 18] === null: " + board[index - 18] === null );
+        console.log("cells[index - 18].classList.contains(white) !== true:" + cells[index - 18].classList.contains("white") !== true);
+        console.log("cells[index].classList.contains(king): " + cells[index].classList.contains("king"));
+        console.log("board[index -9] !== null: " + board[index -9] !== null);
+        console.log("board[index - 9] >= 12: " + board[index - 9] >= 12);
+        console.log("\n");
+        }
+
         if (board[index - 18] === null 
+            && index - 9 >= 0 && index - 18 >=0
         && cells[index].classList.contains("king")
         && cells[index - 18].classList.contains("white") !== true
         && board[index -9] !== null
         && board[index - 9] >= 12) {
+            
             console.log("index = " + index.toString());
             found = true;
         }
     } else {
-        if (board[index + 14] === null 
+        if (board[index + 14] === null
+        &&  index + 7 < 64 && index + 14 < 64
         && cells[index].classList.contains("king")
         && cells[index + 14].classList.contains("white") !== true
         && board[index + 7] < 12 && board[index + 7] !== null) {
@@ -244,19 +277,22 @@ function YouGottaEat(index){
             found = true;
         }
         if (board[index + 18] === null 
+        &&  index + 9 < 64 && index + 18 < 64
         && cells[index].classList.contains("king")
         && cells[index+ 18].classList.contains("white") !== true
         && board[index + 9] < 12 && board[index + 9] !== null) {
             console.log("indexKing = " + index.toString());
             found = true;
         }
-        if (board[index - 14] === null && cells[index - 14].classList.contains("noPieceHere") !== true
+        if (board[index - 14] === null && cells[index - 14].classList.contains("white") !== true
+        && index - 7 >= 0 && index - 14 >=0
         && board[index - 7] < 12 
         && board[index - 7] !== null) {
             console.log("index = " + index.toString());
             found = true;
         }
-        if (board[index - 18] === null && cells[index - 18].classList.contains("noPieceHere") !== true
+        if (board[index - 18] === null && cells[index - 18].classList.contains("white") !== true
+        && index - 9 >= 0 && index - 18 >=0
         && board[index - 9] < 12
         && board[index - 9] !== null) {
             console.log("index = " + index.toString());
@@ -313,14 +349,14 @@ function checkAvailableJumpSpaces() {
             // found = true;
            
         }
-        if (board[selectedPiece.indexOfBoardPiece - 14] === null && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("noPieceHere") !== true
+        if (board[selectedPiece.indexOfBoardPiece - 14] === null && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 7] < 12 
         && board[selectedPiece.indexOfBoardPiece - 7] !== null) {
             selectedPiece.minusFourteenthSpace = true;
             // found = true;
             
         }
-        if (board[selectedPiece.indexOfBoardPiece - 18] === null && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("noPieceHere") !== true
+        if (board[selectedPiece.indexOfBoardPiece - 18] === null && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 9] < 12
         && board[selectedPiece.indexOfBoardPiece - 9] !== null) {
             selectedPiece.minusEighteenthSpace = true;
