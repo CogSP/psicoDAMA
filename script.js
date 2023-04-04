@@ -182,7 +182,7 @@ function isPieceKing() {
     getAvailableSpaces();
 }
 
-function getAvailableSpaces() { //NECESSARIO AGGIUNGERE UN CONTROLLO PER EVITARE DI POTER MUOVERSI SENZA MANGIARE SE UNA MANGIATA E' DISPONIBILE
+function getAvailableSpaces() { 
     //we are using the string equality operator
 
     if (board[selectedPiece.indexOfBoardPiece + 7] === null /*the cell is available (id == null -> no piece here)*/ 
@@ -211,7 +211,7 @@ function getAvailableSpaces() { //NECESSARIO AGGIUNGERE UN CONTROLLO PER EVITARE
     checkAvailableJumpSpaces();
 }
 
-//HA ANCORA DEI BUG!!! (nel caso in cui dei re possano mangiare)
+
 function YouGottaEat(index) {
     
     console.log("controlliamo se il pezzo", index, "è obbligato a mangiare")
@@ -531,7 +531,7 @@ function makeMove(number) {
 
     // we can't pass object properties directly into the arguments of the function (why?) so I need to save it
     let indexOfPiece = selectedPiece.indexOfBoardPiece
-    if (number == 14 || number == 18 || number == -14 || number == -18) /* the piece is eating someone else*/ {
+    if (number == 14 || number == 18 || number == -14 || number == -18) /* the piece is eating someone else*/ { //IN QUESTO CASO DOVREMMO CONTROLLARE EVENTUALI MANGIATE MULTIPLE
         changeData(indexOfPiece, indexOfPiece + number, indexOfPiece + number / 2 /*position of the eaten piece*/);
     } else {
         changeData(indexOfPiece, indexOfPiece + number);
@@ -569,11 +569,89 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
             cells[removePiece].innerHTML = "";
             whiteScore--;
         }
+        //QUI HO MANGIATO, QUINDI CI VORREBBE IL CHECK PER EVENTUALI ALTRE MANGIATE
+        selectedPiece.indexOfBoardPiece = findPiece(selectedPiece.pieceId);
+        let keep = checkMultiple();
+        console.log("Valore di keep = " + keep);
+        if(keep){
+            selectedPiece.seventhSpace = false;
+            selectedPiece.minusSeventhSpace = false;
+            selectedPiece.ninthSpace = false;
+            selectedPiece.minusNinthSpace = false;
+            checkAvailableJumpSpaces();
+            return;
+        }
     }
 
     resetSelectedPieceProperties();
     removeCellonclick();  //these first two are necessary for the next turn
     removeEventListeners();
+}
+
+function checkMultiple(){
+    if (turn) {
+        if (board[selectedPiece.indexOfBoardPiece + 14] === null 
+        && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
+        && board[selectedPiece.indexOfBoardPiece + 7] >= 12) /*black pieces have id >= 12*/ {
+            return true;
+            // found = true;
+            
+        }
+        if (board[selectedPiece.indexOfBoardPiece + 18] === null 
+        && cells[selectedPiece.indexOfBoardPiece + 18].classList.contains("white") !== true
+        && board[selectedPiece.indexOfBoardPiece + 9] >= 12) {
+            return true;
+            // found = true;
+            
+        }
+        if (selectedPiece.isKing && board[selectedPiece.indexOfBoardPiece - 14] === null 
+        && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("white") !== true
+        && board[selectedPiece.indexOfBoardPiece - 7] >= 12) {
+            return true;
+            // found = true;
+            
+        }
+        if (selectedPiece.isKing && board[selectedPiece.indexOfBoardPiece - 18] === null 
+        && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("white") !== true
+        && board[selectedPiece.indexOfBoardPiece - 9] >= 12) {
+            return true;
+            // found = true;
+           
+        }
+    } else {
+        if (selectedPiece.isKing && board[selectedPiece.indexOfBoardPiece + 14] === null 
+        && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
+        && board[selectedPiece.indexOfBoardPiece + 7] < 12 && board[selectedPiece.indexOfBoardPiece + 7] !== null) {
+            return true;
+            // found = true;
+            
+        }
+        if (selectedPiece.isKing && board[selectedPiece.indexOfBoardPiece + 18] === null 
+        && cells[selectedPiece.indexOfBoardPiece + 18].classList.contains("white") !== true
+        && board[selectedPiece.indexOfBoardPiece + 9] < 12 && board[selectedPiece.indexOfBoardPiece + 9] !== null) {
+            return true;
+            // found = true;
+           
+        }
+        if (board[selectedPiece.indexOfBoardPiece - 14] === null && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("white") !== true
+        && board[selectedPiece.indexOfBoardPiece - 7] < 12 
+        && board[selectedPiece.indexOfBoardPiece - 7] !== null) {
+            return true;
+            // found = true;
+            
+        }
+        if (board[selectedPiece.indexOfBoardPiece - 18] === null && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("white") !== true
+        && board[selectedPiece.indexOfBoardPiece - 9] < 12
+        && board[selectedPiece.indexOfBoardPiece - 9] !== null) {
+            return true;
+            // found = true;
+            
+        }
+        
+    }
+
+    return false;
+
 }
 
 
