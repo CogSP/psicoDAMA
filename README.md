@@ -1,11 +1,8 @@
-#PsicoDama
+# PsicoDama
+
 The aim of this work is to implement a fully functional checkers game with special psychedelic effects. The project was developed for the "Linguaggi e Tecnologie per il Web" (Sapienza - Ingegneria Informatica - 2023) exam.
 
 # Technologies we used
-
-<a href="https://github.com/OWNER/REPO/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=OWNER/REPO" />
-</a>
 
 We used HTML + CSS + Javascript with Bootstrap for the front-end, PHP for the back-end and PostgreSQL as our DBMS.
 
