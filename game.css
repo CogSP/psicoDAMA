@@ -143,14 +143,16 @@ td {   /* these attributes apply both to black and white cells */
     
 }
 
- .king.black-piece { 
+/*.king.black-piece {*/
+.black-piece.king { 
     background-color: purple; 
     animation-name: become_black_king;
     animation-iteration-count: infinite;
     animation-duration: 1s;
 }
 
-.king.white-piece { 
+/*.king.white-piece {*/
+.white-piece.king { 
     background-color: orange;
     animation-name: become_white_king;
     animation-iteration-count: infinite;

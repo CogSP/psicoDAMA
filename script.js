@@ -5,6 +5,7 @@ TODO:
     -aggiustare YouGottaEat(), ha problemi quando un re può mangiare
     -aggiustare il fatto che la corona appare dopo una mossa ai re
  */
+
 const board = [ /*64 item array*/
     null, 0, null, 1, null, 2, null, 3,
     4, null, 5, null, 6, null, 7, null,
@@ -27,6 +28,9 @@ let findPiece = function(pieceId) { //La funzione restituisce, dato l'id html de
 
 // references to the web html page (DOM references)
 const cells = document.querySelectorAll("td"); /* list of all the "td"s in the  html file*/
+
+const pieces = document.querySelectorAll("p");
+
 let whitesPieces = document.querySelectorAll(".white-piece"); /* does it work? */
 let blacksPieces = document.querySelectorAll(".black-piece"); /* does it work? */
 const whiteTurnText = document.querySelectorAll(".white-turn-text");
@@ -70,23 +74,23 @@ let selectedPiece = {
 //piece is clicked, will invoke the function "getPlayerPieces"
 function givePiecesEventListeners() {
 
-    console.log("we have " + cells.length + " cells\n");
-    console.log("white has: " + whitesPieces.length + " pieces, while black has: " + blacksPieces.length + " pieces\n");
+    //console.log("we have " + cells.length + " cells\n");
+    //console.log("white has: " + whitesPieces.length + " pieces, while black has: " + blacksPieces.length + " pieces\n");
 
     if (turn) {
-        console.log("white's turn");
+        //console.log("white's turn");
         for (let i = 0; i < whitesPieces.length; i++) {
             whitesPieces[i].addEventListener("click", getPlayerPieces);
         }
     } else {
-        console.log("black's turn");
+        //console.log("black's turn");
         for (let i = 0; i < blacksPieces.length; i++) {
             blacksPieces[i].addEventListener("click", getPlayerPieces);
         }
     }
     
 
-    console.log("we gave all the pieces the click event listener\n");
+    //console.log("we gave all the pieces the click event listener\n");
 }
 
     /* END OF EVENT LISTENER CONFIGURATION */
@@ -98,10 +102,10 @@ function getPlayerPieces() {
     //whites turn
   
     if (turn) {
-        console.log("a white piece has been clicked");
+        //console.log("a white piece has been clicked");
         playerPieces = whitesPieces;
     } else {
-        console.log("a black piece has been clicked");
+        //console.log("a black piece has been clicked");
         playerPieces = blacksPieces;
     }
 
@@ -156,8 +160,8 @@ function getSelectedPiece() {
     selectedPiece.pieceId = parseInt(event.target.id);
     selectedPiece.indexOfBoardPiece = findPiece(selectedPiece.pieceId);
     
-    console.log("the clicked piece is " + selectedPiece.pieceId + 
-        " and it is in position: " + selectedPiece.indexOfBoardPiece + "\n");
+    //console.log("the clicked piece is " + selectedPiece.pieceId + 
+    //    " and it is in position: " + selectedPiece.indexOfBoardPiece + "\n");
     
    
     isPieceKing();
@@ -168,7 +172,7 @@ function getSelectedPiece() {
 function isPieceKing() {
 
     //element.classList give us the list of classes to which our element belongs
-    console.log("sto per controllare se l'elemento è king. L'elemento ha id = " + selectedPiece.pieceId);
+    //console.log("sto per controllare se l'elemento è king. L'elemento ha id = " + selectedPiece.pieceId);
     if (document.getElementById(selectedPiece.pieceId).classList.contains("king")) {
         selectedPiece.isKing = true;
     } else {
@@ -208,94 +212,132 @@ function getAvailableSpaces() { //NECESSARIO AGGIUNGERE UN CONTROLLO PER EVITARE
 }
 
 //HA ANCORA DEI BUG!!! (nel caso in cui dei re possano mangiare)
-function YouGottaEat(index){
+function YouGottaEat(index) {
+    
+    console.log("controlliamo se il pezzo", index, "è obbligato a mangiare")
+    
     if (turn) {
+
         if (
         index + 9 < 64 && index + 18 < 64 &&
-        board[index+ 14] === null 
+        board[index + 14] === null 
         && cells[index + 14].classList.contains("white") !== true
         && board[index + 7] !== null
         && board[index + 7] >= 12) /*black pieces have id >= 12*/ {
-            console.log("index = " + index.toString());
+            console.log("c'è un nero in + 7 da mangiare per poi andare + 14")
+            console.log("index = ", index.toString());
             found = true;
         }
+
         if (board[index + 18] === null 
         &&  index + 9 < 64 && index + 18 < 64
         && cells[index + 18].classList.contains("white") !== true
         && board[index + 9] !== null
         && board[index + 9] >= 12) {
-            console.log("index = " + index.toString());
+            console.log("c'è un nero in + 9 da mangiare per poi andare + 18")
+            console.log("index = ", index.toString());
             found = true;
         }
         
-        if(index - 7 >= 0 && index - 14 >=0){
-            console.log("board[index - 14] === null: " + board[index - 14] === null);
-            console.log("cells[index - 14].classList.contains(white) !== true:" + cells[index - 14].classList.contains("white") !== true );
-            console.log("cells[index].classList.contains(king): " + cells[index].classList.contains("king"));
-            console.log("board[index -7] !== null: " + board[index -7] !== null);
-            console.log("board[index - 7] >= 12: " + board[index - 7] >= 12);
+        if(index - 7 >= 0 && index - 14 >=0) {
+            console.log("board[index - 14] === null:", board[index - 14] === null);
+            console.log("cells[index - 14].classList.contains(white) !== true:", cells[index - 14].classList.contains("white") !== true );
+            console.log("document.getElementById(board[index]).classList.contains('king'):", document.getElementById(board[index]).classList.contains("king"));
+            console.log("board[index -7] !== null: ", board[index -7] !== null);
+            console.log("board[index - 7] >= 12: ", board[index - 7] >= 12);
             console.log("\n");
+            console.log("ora printo ClassList:", cells[index].classList)
         }
         
         if (
         index - 7 >= 0 && index - 14 >=0
         && board[index- 14] === null 
-        && cells[index].classList.contains("king")
+        && document.getElementById(board[index]).classList.contains("king")
         && cells[index - 14].classList.contains("white") !== true
         && board[index -7] !== null
         && board[index - 7] >= 12) {
-            console.log("index = " + index.toString());
+            console.log("poiché questo bianco è un re, può mangiare al contrario un pezzo nero in -7 per poi andare in -14")
+            console.log("index = ", index.toString());
             found = true;
         }
+
         if(index - 9 >= 0 && index - 18 >=0){
         console.log("Condizioni verificate: ");
-        console.log("board[index - 18] === null: " + board[index - 18] === null );
-        console.log("cells[index - 18].classList.contains(white) !== true:" + cells[index - 18].classList.contains("white") !== true);
-        console.log("cells[index].classList.contains(king): " + cells[index].classList.contains("king"));
-        console.log("board[index -9] !== null: " + board[index -9] !== null);
-        console.log("board[index - 9] >= 12: " + board[index - 9] >= 12);
+        console.log("board[index - 18] === null: ", board[index - 18] === null );
+        console.log("cells[index - 18].classList.contains(white) !== true:", cells[index - 18].classList.contains("white") !== true);
+        console.log("document.getElementById(board[index]).classList.contains('king')", document.getElementById(board[index]).classList.contains("king"));
+        console.log("board[index -9] !== null: ", board[index -9] !== null);
+        console.log("board[index - 9] >= 12: ", board[index - 9] >= 12);
         console.log("\n");
+        console.log("ora printo ClassList:", cells[index].classList)
         }
 
         if (board[index - 18] === null 
             && index - 9 >= 0 && index - 18 >=0
-        && cells[index].classList.contains("king")
+        && document.getElementById(board[index]).classList.contains("king")
         && cells[index - 18].classList.contains("white") !== true
         && board[index -9] !== null
         && board[index - 9] >= 12) {
-            
-            console.log("index = " + index.toString());
+            console.log("poiché questo bianco è un re, può mangiare al contrario un pezzo nero in -9 per poi andare in -18")
+            console.log("index = ", index.toString());
             found = true;
         }
     } else {
+
+        if (index + 7 < 64 && index + 18 < 64) {
+            console.log("Condizioni verificate:");
+            console.log("board[index + 14] === null", board[index + 14] === null);
+            console.log("index + 7 < 64 && index + 14 < 64", index + 7 < 64 && index + 14 < 64);
+            console.log("document.getElementById(board[index]).classList.contains('king')", document.getElementById(board[index]).classList.contains("king"))
+            console.log("cells[index + 14].classList.contains('white') !== true", cells[index + 14].classList.contains("white") !== true)
+            console.log("board[index + 7] < 12 && board[index + 7] !== null", board[index + 7] < 12 && board[index + 7] !== null)
+            console.log("ora printo ClassList:", cells[index].classList)
+        }
+
         if (board[index + 14] === null
         &&  index + 7 < 64 && index + 14 < 64
-        && cells[index].classList.contains("king")
+        && document.getElementById(board[index]).classList.contains("king")
         && cells[index + 14].classList.contains("white") !== true
         && board[index + 7] < 12 && board[index + 7] !== null) {
-            console.log("indexKing = " + index.toString());
+            console.log("poiché questo nero è un re, può mangiare al contrario un pezzo nero in +7 per poi andare in +14")
+            console.log("indexKing = ", index.toString());
             found = true;
         }
+
+
+        if (index + 9 < 64 && index + 18 < 64) {
+            console.log("board[index + 18] === null", board[index + 18] === null)
+            console.log("index + 9 < 64 && index + 18 < 64", index + 9 < 64 && index + 18 < 64)
+            console.log("document.getElementById(board[index]).classList.contains('king')", document.getElementById(board[index]).classList.contains("king"))
+            console.log("cells[index + 18].classList.contains('white') !== true", cells[index + 18].classList.contains("white") !== true)
+            console.log("board[index + 9] < 12 && board[index + 9] !== null", board[index + 9] < 12 && board[index + 9] !== null)
+            console.log("ora printo ClassList:", cells[index].classList)
+        }
+        
+
         if (board[index + 18] === null 
         &&  index + 9 < 64 && index + 18 < 64
-        && cells[index].classList.contains("king")
-        && cells[index+ 18].classList.contains("white") !== true
+        && document.getElementById(board[index]).classList.contains("king")
+        && cells[index + 18].classList.contains("white") !== true
         && board[index + 9] < 12 && board[index + 9] !== null) {
-            console.log("indexKing = " + index.toString());
+            console.log("poiché questo nero è un re, può mangiare al contrario un pezzo nero in +9 per poi andare in +18")
+            console.log("indexKing = ", index.toString());
             found = true;
         }
         if (board[index - 14] === null && cells[index - 14].classList.contains("white") !== true
         && index - 7 >= 0 && index - 14 >=0
         && board[index - 7] < 12 
         && board[index - 7] !== null) {
-            console.log("index = " + index.toString());
+            console.log("c'è un bianco in  -7 da mangiare per poi andare -14")
+            console.log("index = ", index.toString());
             found = true;
         }
         if (board[index - 18] === null && cells[index - 18].classList.contains("white") !== true
         && index - 9 >= 0 && index - 18 >=0
         && board[index - 9] < 12
         && board[index - 9] !== null) {
-            console.log("index = " + index.toString());
+            console.log("c'è un bianco in -9 da mangiare per poi andare -18")
+            console.log("index = ", index.toString());
             found = true;
         }
     }
@@ -410,13 +452,14 @@ function checkPieceConditions() {
 
 function givePieceBorder() {
 
-    console.log("Properties of this piece:\n id: " + selectedPiece.pieceId + " indexBoard: " + selectedPiece.indexOfBoardPiece + " isKing: " + selectedPiece.isKing + " seventhSpace: " + selectedPiece.seventhSpace +
-        " ninthSpace: " + selectedPiece.ninthSpace + " fourteenth: " + selectedPiece.fourteenthSpace + " eighteenthSpace: " + selectedPiece.eighteenthSpace + " minusSeventhSpace: " + selectedPiece.minusSeventhSpace + " minusNinthSpace: " + selectedPiece.minusNinthSpace
-        + " minusFourteenthSpace: " + selectedPiece.minusFourteenthSpace + " minusEighteenthSpace: " + selectedPiece.minusEighteenthSpace + "\n")
+    //console.log("Properties of this piece:\n id: " + selectedPiece.pieceId + " indexBoard: " + selectedPiece.indexOfBoardPiece + " isKing: " + selectedPiece.isKing + " seventhSpace: " + selectedPiece.seventhSpace +
+    //    " ninthSpace: " + selectedPiece.ninthSpace + " fourteenth: " + selectedPiece.fourteenthSpace + " eighteenthSpace: " + selectedPiece.eighteenthSpace + " minusSeventhSpace: " + selectedPiece.minusSeventhSpace + " minusNinthSpace: " + selectedPiece.minusNinthSpace
+    //    + " minusFourteenthSpace: " + selectedPiece.minusFourteenthSpace + " minusEighteenthSpace: " + selectedPiece.minusEighteenthSpace + "\n")
 
     if (selectedPiece.seventhSpace || selectedPiece.ninthSpace || selectedPiece.fourteenthSpace || selectedPiece.eighteenthSpace
         || selectedPiece.minusSeventhSpace || selectedPiece.minusNinthSpace || selectedPiece.minusFourteenthSpace || selectedPiece.minusEighteenthSpace) {
             document.getElementById(selectedPiece.pieceId).style.border = "3px solid green"; //it's selected
+            console.log("hai selezionato il pezzo in posizione", selectedPiece.indexOfBoardPiece)
             giveCellsClick();
     } else {
         //this piece can't move
@@ -504,9 +547,17 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
     board[modifiedIndex] = parseInt(selectedPiece.pieceId);
     if (turn && selectedPiece.pieceId < 12 && modifiedIndex >= 57) { //the piece reached the end: it become a king
         document.getElementById(selectedPiece.pieceId).classList.add("king")
+        
+        cells[modifiedIndex].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
+        whitesPieces = document.querySelectorAll(".white-piece");
+    
     }
     if (turn == false && selectedPiece.pieceId >= 12 && modifiedIndex <= 7) { //same but for black
         document.getElementById(selectedPiece.pieceId).classList.add("king")
+
+        cells[modifiedIndex].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`;   //WARNING: must use the "backtick" ` symbol
+        blacksPieces = document.querySelectorAll(".black-piece");
+
     }
     if (removePiece) /*someone got eaten*/ {
         board[removePiece] = null;
@@ -581,5 +632,5 @@ function changePlayer() {
 
 
 //starting point: the cycle begins once the page has loaded
-console.log("start of the program\n");
+//console.log("start of the program\n");
 givePiecesEventListeners();
