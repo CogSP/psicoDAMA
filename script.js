@@ -545,7 +545,7 @@ function makeMove(number) {
 function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
     board[indexOfBoardPiece] = null;
     board[modifiedIndex] = parseInt(selectedPiece.pieceId);
-    if (turn && selectedPiece.pieceId < 12 && modifiedIndex >= 57) { //the piece reached the end: it become a king
+    if (turn && selectedPiece.pieceId < 12 && modifiedIndex >= 56) { //the piece reached the end: it become a king
         document.getElementById(selectedPiece.pieceId).classList.add("king")
         
         cells[modifiedIndex].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
