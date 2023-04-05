@@ -10,7 +10,7 @@
     <script defer src="script.js"></script> 
     <title>Let's FIGHT!</title>
 </head>
-<body>
+<body id = "body">
     <div class="desktop">
         <div class="white-turn-text">
             Whites turn
@@ -21,6 +21,42 @@
             Blacks turn
         </div>
     </div>
+
+
+    <!-- MODAL DIALOG-->
+
+    <div class="modal-container" id="modal-container-id">
+        <div class="modal">
+          <!-- inizialmente <form action="register.php" method="post">-->
+            <form action="" method="" id = "form">  
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">User 1 name </span>
+                <input name = "fullname" type="text" placeholder="Enter your name" required>
+              </div>
+              <div class="input-box">
+                <span class="details">User 2 name</span>
+                <input name = "username" type="text" placeholder="Enter your username" required>
+              </div>
+              <div class="input-box">
+                <span class="details">User 1 password</span>
+                <input name = "email" type="text" placeholder="Enter your email" required>
+              </div>
+              <div class="input-box">
+                <span class="details">User 2 password</span>
+                <input name = "number" type="text" placeholder="Enter your number" required>
+              </div>
+            </div>
+            <div class="bottone">
+                <button type="submit" id = "submit">Submit</button> 
+            </div>
+        </form>
+        </div>
+      </div>
+    
+    <!-- END OF MODAL DIALOG-->
+
+
     <main>
     <table>  <!-- the structure of the checkers board: 8 x 8. The pieces moves only over "black" cells -->
         <!-- we use <p> tag to "wrap" the white pieces, and <spam> for the white ones. Could we use <spam> 

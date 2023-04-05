@@ -709,6 +709,32 @@ function changePlayer() {
 }
 
 
+
+// FOR THE LOGIN FORM
+const modal_container = document.getElementById("modal-container-id");
+
+const close = document.getElementById("form");
+
+modal_container.classList.add('show');
+
+function removeOnSubmit(event) {
+    console.log("ao porcoddio")
+    modal_container.classList.remove('show');
+    event.preventDefault();
+
+    window.setTimeout(function () {
+        // rimuovo proprio il form dalla pagina in modo che non impedisca di selezionare le pedine 
+        var parent = document.getElementById("body")
+        var child = document.getElementById("modal-container-id")
+        parent.removeChild(child)
+    }, 1000) // metto 1 secondo di attesa in modo che la transizione di 0.3 secondi di CSS in model-container venga eseguita;
+
+    
+}
+
+close.addEventListener("submit", removeOnSubmit);
+
+
 //starting point: the cycle begins once the page has loaded
 //console.log("start of the program\n");
 givePiecesEventListeners();
