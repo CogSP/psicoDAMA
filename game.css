@@ -1,9 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+
 body{
 background-size: 300% 300%;
 background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
 -webkit-animation: AnimateBG 5s ease infinite;
         animation: AnimateBG 5s ease infinite;
 }
+
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    opacity: 0;
+    width: 100vw;
+    transition: opacity 0.3s ease;
+}
+
+.modal-container.show {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.modal {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 30px 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    max-width: 100%;
+    text-align: center;
+}
+
+
+form .input-box span.details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.modal form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+  }
+  form .input-box span.details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  .user-details .input-box input:focus,
+  .user-details .input-box input:valid{
+    border-color: #b40000;
+  }
+
+  form .bottone{
+    height: 45px;
+    margin: 35px 0
+  }
+
+  form .bottone button{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+    
+  }
+  form .bottone button:hover {
+    background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+  }
+
+
 
 @-webkit-keyframes AnimateBG {
 0% {
