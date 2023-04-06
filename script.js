@@ -678,13 +678,59 @@ function checkForWin() {
             whiteTurnText[i].style.color = "black";
             blackTurnText[i].style.display = "none";
             whiteTurnText[i].textContent = "WHITE WINS!";
+        
+            // aggiungiamo un pezzo HTML con il pop up
+            // NOTA: Importante che modal-container abbia come ulteriore classe show altrimenti non si vede il pop up
+            placeholder_for_win_message = document.getElementById("placeholder-for-win-message-id").innerHTML = 
+            `<div class="modal-container show" id="modal-container-id">
+                <div class="modal">
+                    <form action="" method="" id = "form">  
+                        <div class="user-details">
+                            <div class="input-box">
+                                <span class="details">WHITE WINS! </span>
+                            </div>
+                        </div>
+                        <div class="bottone">
+                            <button type="button" onclick = "location.href='game.html'" id = "play again">Play Again</button> 
+                        </div>
+                        <div class="bottone">
+                            <button type="button" onclick = "location.href='index.html'" id = "home">Home</button> 
+                        </div>
+                    </form>
+                </div>
+            </div>`;
+
         }
+
+
     } else if (whiteScore === 0) {
         divider.style.display = "none";
         for (let i = 0; i < blackTurnText.length; i++) {            
             blackTurnText[i].style.color = "black";
             whiteTurnText[i].style.display = "none";
             blackTurnText[i].textContent = "BLACK WINS!";
+
+
+            // aggiungiamo un pezzo HTML con il pop up
+            // NOTA: Importante che modal-container abbia come ulteriore classe show altrimenti non si vede il pop up
+            placeholder_for_win_message = document.getElementById("placeholder-for-win-message-id").innerHTML = 
+            `<div class="modal-container show" id="modal-container-id">
+                <div class="modal">
+                    <form action="" method="" id = "form">  
+                        <div class="user-details">
+                            <div class="input-box">
+                                <span class="details">BLACK WINS! </span>
+                            </div>
+                        </div>
+                        <div class="bottone">
+                            <button type="button" onclick = "location.href='game.html'" id = "play again">Play Again</button> 
+                        </div>
+                        <div class="bottone">
+                            <button type="button" onclick = "location.href='index.html'" id = "home">Home</button> 
+                        </div>
+                    </form>
+                </div>
+            </div>`;
         }
     }
     changePlayer();
@@ -718,7 +764,6 @@ const close = document.getElementById("form");
 modal_container.classList.add('show');
 
 function removeOnSubmit(event) {
-    console.log("ao porcoddio")
     modal_container.classList.remove('show');
     event.preventDefault();
 
