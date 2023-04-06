@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="game.css"> 
     <!-- <link rel = "stylesheet" href = "back.css"> -->
     <script src="https://kit.fontawesome.com/cd9a86b4ff.js" crossorigin="anonymous"></script> <!-- serve per le corone-->
-    <script defer src="script.js"></script> 
+    <script defer src="script.js"></script>
+    <!-- <script defer src ="profile.js"></script> -->
+
     <title>Let's FIGHT!</title>
 </head>
 <body id = "body">
@@ -32,19 +34,21 @@
             <div class="user-details">
               <div class="input-box">
                 <span class="details">User 1 name </span>
-                <input name = "fullname" type="text" placeholder="Enter your name" required>
+                <input name = "user1name" type="text" placeholder="Enter first player's username" required>
               </div>
               <div class="input-box">
                 <span class="details">User 2 name</span>
-                <input name = "username" type="text" placeholder="Enter your username" required>
+                <input name = "user2name" type="text" placeholder="Enter second player's username" required>
               </div>
               <div class="input-box">
                 <span class="details">User 1 password</span>
-                <input name = "email" type="text" placeholder="Enter your email" required>
+                <input id = "pwd" name = "user1pwd" type="password" placeholder="Enter first player's password" required>
+                <input type="button" onclick="showPwd()" value="Mostra/nascondi password">
               </div>
               <div class="input-box">
                 <span class="details">User 2 password</span>
-                <input name = "number" type="text" placeholder="Enter your number" required>
+                <input id = "cpwd" name = "user2pwd" type="password" placeholder="Enter second player's password" required>
+                <input  type="button" onclick="showCpwd()" value="Mostra/nascondi password">
               </div>
             </div>
             <div class="bottone">
