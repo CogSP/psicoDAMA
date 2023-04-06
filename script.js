@@ -569,7 +569,7 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
             cells[removePiece].innerHTML = "";
             whiteScore--;
         }
-        //QUI HO MANGIATO, QUINDI CI VORREBBE IL CHECK PER EVENTUALI ALTRE MANGIATE
+        
         selectedPiece.indexOfBoardPiece = findPiece(selectedPiece.pieceId);
         let keep = checkMultiple();
         console.log("Valore di keep = " + keep);
