@@ -1,266 +1,753 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
+@media (min-width: 500px) {
 
-body{
-background-size: 300% 300%;
-background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
--webkit-animation: AnimateBG 5s ease infinite;
-        animation: AnimateBG 5s ease infinite;
+	body {
+		background-size: 300% 300%;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+		-webkit-animation: AnimateBG 5s ease infinite;
+		animation: AnimateBG 5s ease infinite;
+	}
+
+	.modal-container {
+		background-color: rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		opacity: 0;
+		width: 100%;
+		transition: opacity 0.3s ease;
+	}
+
+	.modal-container.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
+
+	.modal {
+		background-color: #fff;
+		border-radius: 5px;
+		padding: 30px 50px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		width: 600px;
+		max-width: 100%;
+		text-align: center;
+	}
+
+
+	form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+
+	.modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 20px 0 12px 0;
+	}
+
+
+	form .user-details .input-box {
+		margin-bottom: 15px;
+		width: calc(100% / 2 - 20px);
+	}
+
+	form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+
+	.user-details .input-box input {
+		height: 45px;
+		width: 100%;
+		outline: none;
+		font-size: 16px;
+		border-radius: 5px;
+		padding-left: 15px;
+		border: 1px solid #ccc;
+		border-bottom-width: 2px;
+		transition: all 0.3s ease;
+	}
+
+	.user-details .input-box input:focus,
+	.user-details .input-box input:valid {
+		border-color: #b40000;
+	}
+
+	form .bottone {
+		height: 45px;
+		margin: 35px 0
+	}
+
+	form .bottone button {
+		height: 100%;
+		width: 100%;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		font-size: 18px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+	}
+
+	form .bottone button:hover {
+		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+	}
+
+	/* nuovo */
+
+	.placeholder-for-win-message .modal-container {
+		background-color: rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		opacity: 0;
+		width: 100vw;
+		transition: opacity 0.3s ease;
+	}
+
+	.placeholder-for-win-message .modal-container.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
+
+	.placeholder-for-win-message .modal {
+		background-color: #fff;
+		border-radius: 5px;
+		padding: 30px 50px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		width: 600px;
+		max-width: 100%;
+		text-align: center;
+	}
+
+
+	.placeholder-for-win-message form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+
+	.placeholder-for-win-message .modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 20px 0 12px 0;
+	}
+
+
+	.placeholder-for-win-message form .user-details .input-box {
+		margin-bottom: 15px;
+		width: calc(100% / 2 - 20px);
+	}
+
+	.placeholder-for-win-message form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+
+	.placeholder-for-win-message .user-details .input-box input {
+		height: 45px;
+		width: 100%;
+		outline: none;
+		font-size: 16px;
+		border-radius: 5px;
+		padding-left: 15px;
+		border: 1px solid #ccc;
+		border-bottom-width: 2px;
+		transition: all 0.3s ease;
+	}
+
+	.placeholder-for-win-message .user-details .input-box input:focus,
+	.placeholder-for-win-message .user-details .input-box input:valid {
+		border-color: #b40000;
+	}
+
+	.placeholder-for-win-message form .bottone {
+		height: 45px;
+		margin: 35px 0
+	}
+
+	.placeholder-for-win-message form .bottone button {
+		height: 100%;
+		width: 100%;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		font-size: 18px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+	}
+
+	.placeholder-for-win-message form .bottone button:hover {
+		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+	}
+
+	/* fine nuovo */
+
+	@-webkit-keyframes AnimateBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@keyframes AnimateBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+
+	* {
+		margin: auto;
+	}
+
+	table {
+
+		border-style: solid;
+		border-width: 0.75rem;
+		border-color: rgb(70, 69, 69);
+		border-radius: 0.313rem;
+		background-color: white;
+
+
+		/* La table dovrebbe rimanere fissa al centro se io scorro la pagina ma non ci riesco*/
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		/*height: 100vh;*/
+		min-height: 100%;
+
+	}
+
+
+	.desktop {
+		/* Anche lui dovrebbe rimanere fermo mentre la pagina scorre, cosa che per ora non riesco a settare*/
+		margin: 0;
+		width: 20%;
+		display: flex;
+		/*justify-content: space-between;*/
+	}
+
+	.desktop div {
+		border: 2px lightgrey solid;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		background-color: white;
+		font-size: 20px;
+	}
+
+
+	.white-turn-text {
+		text-align: center;
+		color: black;
+		font-family: "open sans";
+		padding: 2px;
+		font-size: 25px;
+	}
+
+	.black-turn-text {
+		text-align: center;
+		font-family: "open sans";
+		font-size: 25px;
+		padding: 2px;
+		color: lightgray;
+	}
+
+	td {
+		/* these attributes apply both to black and white cells */
+		width: 4.063rem;
+		height: 4.063rem;
+		text-align: center;
+	}
+
+	.white {
+		background-color: #f1f1f1;
+		border: 1px solid lightgrey
+	}
+
+	.black {
+		background-color: #79032e;
+		/* we consider this color as black */
+		border: 1px solid lightgrey;
+
+	}
+
+	.black-piece {
+		width: 20px;
+		height: 20px;
+		padding: 12px;
+		background-color: black;
+		border: 1px solid #808080;
+		border-radius: 50px;
+
+	}
+
+
+	.white-piece {
+		width: 20px;
+		height: 20px;
+		padding: 12px;
+		background-color: rgb(252, 249, 249);
+		border: 1px solid #808080;
+		border-radius: 50px;
+	}
+
+	@keyframes become_black_king {
+
+		/* Animazioni matte per quando un pezzo diventa Re, colori da decidere*/
+		0% {
+			background-color: rgb(0, 0, 0);
+		}
+
+		50% {
+			background-color: goldenrod;
+		}
+
+		100% {
+			background-color: black;
+		}
+
+		/* Sarebbe figo aggiungere il simbolino di una corona dentro alla pedina quando diventa re, non dovrebbe essere troppo difficile in teoria*/
+	}
+
+	@keyframes become_white_king {
+		0% {
+			background-color: white;
+		}
+
+		50% {
+			background-color: rgba(163, 0, 133, 0.848);
+		}
+
+		100% {
+			background-color: white;
+		}
+
+	}
+
+	.black-piece.king {
+		background-color: purple;
+		animation-name: become_black_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+	}
+
+	.white-piece.king {
+		background-color: orange;
+		animation-name: become_white_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+	}
+
+	p {
+		display: inline-block;
+	}
+
+	#divider {
+		font-size: 90px;
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+
 }
 
+@media (max-width: 500px) {
 
-.modal-container {
-    background-color: rgba(0, 0, 0, 0.3);
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    opacity: 0;
-    width: 100vw;
-    transition: opacity 0.3s ease;
-}
-
-.modal-container.show {
-    pointer-events: auto;
-    opacity: 1;
-}
-
-.modal {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 30px 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    width: 600px;
-    max-width: 100%;
-    text-align: center;
-}
+	body {
+		background-size: 300% 300%;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+		-webkit-animation: AnimateBG 5s ease infinite;
+		animation: AnimateBG 5s ease infinite;
+	}
 
 
-form .input-box span.details{
-    display: block;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-.modal form .user-details{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 20px 0 12px 0;
-}
+	.modal-container {
+		background-color: rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		opacity: 0;
+		width: 100%;
+		transition: opacity 0.3s ease;
+	}
 
 
-form .user-details .input-box{
-    margin-bottom: 15px;
-    width: calc(100% / 2 - 20px);
-  }
-  form .input-box span.details{
-    display: block;
-    font-weight: 500;
-    margin-bottom: 5px;
-  }
-  .user-details .input-box input{
-    height: 45px;
-    width: 100%;
-    outline: none;
-    font-size: 16px;
-    border-radius: 5px;
-    padding-left: 15px;
-    border: 1px solid #ccc;
-    border-bottom-width: 2px;
-    transition: all 0.3s ease;
-  }
-  
-  .user-details .input-box input:focus,
-  .user-details .input-box input:valid{
-    border-color: #b40000;
-  }
-
-  form .bottone{
-    height: 45px;
-    margin: 35px 0
-  }
-
-  form .bottone button{
-    height: 100%;
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
-    
-  }
-  form .bottone button:hover {
-    background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
-  }
+	.modal-container.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
 
 
+	.modal {
+		background-color: #fff;
+		border-radius: 5px;
+		/* padding: 30px 50px; */
+		padding: 30px 0px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		width: 600px;
+		max-width: 100%;
+		text-align: center;
+	}
 
-@-webkit-keyframes AnimateBG {
-0% {
-  background-position: 0% 50%;
-}
-50% {
-  background-position: 100% 50%;
-}
-100% {
-  background-position: 0% 50%;
-}
-}
-
-@keyframes AnimateBG {
-0% {
-  background-position: 0% 50%;
-}
-50% {
-  background-position: 100% 50%;
-}
-100% {
-  background-position: 0% 50%;
-}
-}
+	form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
 
 
-* {   
-    margin: auto;
-}
-
-table {
-   
-    border-style: solid;
-    border-width: 12px;
-    border-color: rgb(70, 69, 69);
-    border-radius: 5px;
-    background-color: white;
+	.modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 20px 0 12px 0;
+	}
 
 
-    /* La table dovrebbe rimanere fissa al centro se io scorro la pagina ma non ci riesco*/
-}
+	form .user-details .input-box {
+		margin-bottom: 15px;
+		width: calc(100% / 2 - 20px);
+	}
 
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
- 
-}
-
-
-.desktop {
-    /* Anche lui dovrebbe rimanere fermo mentre la pagina scorre, cosa che per ora non riesco a settare*/
-    margin: 0;
-    width: 20%;
-    display:flex;
-    /*justify-content: space-between;*/
-}
-.desktop div{
-    
-    border: 2px lightgrey solid;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    background-color: white;
-    font-size:20px;
-}
+	form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
 
 
-.white-turn-text {
-    text-align: center;
-    color: black;
-    font-family: "open sans";
-    padding:2px;
-    font-size: 25px;
-}
-
-.black-turn-text {
-    text-align: center;
-    font-family: "open sans";
-    font-size: 25px;
-    padding: 2px;
-    color: lightgray;
-}
+	.modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 20px 0 12px 0;
+	}
 
 
-td {   /* these attributes apply both to black and white cells */
-    width: 65px;
-    height: 65px;
-    text-align: center;
-}
+	form .user-details .input-box {
+		margin-bottom: 15px;
+		width: calc(100% / 2 - 20px);
+	}
 
-.white {
-    background-color: #f1f1f1;
-    border: 1px solid lightgrey
-}
+	form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
 
-.black {
-    background-color: #79032e; /* we consider this color as black */
-    border: 1px solid lightgrey;
-    
-}
+	.user-details .input-box input {
+		height: 45px;
+		width: 100%;
+		outline: none;
+		font-size: 16px;
+		border-radius: 5px;
+		padding-left: 15px;
+		border: 1px solid #ccc;
+		border-bottom-width: 2px;
+		transition: all 0.3s ease;
+	}
 
-.black-piece {
-    width: 20px;
-    height: 20px;
-    padding: 12px;
-    background-color: black;
-    border: 1px solid #808080; 
-    border-radius: 50px;
-    
-}
+	.user-details .input-box input:focus,
+	.user-details .input-box input:valid {
+		border-color: #b40000;
+	}
+
+	form .bottone {
+		height: 45px;
+		margin: 35px 0
+	}
+
+	form .bottone button {
+		height: 100%;
+		width: 100%;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		font-size: 18px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+	}
+
+	form .bottone button:hover {
+		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+	}
+
+	/* nuovo */
+
+	.placeholder-for-win-message .modal-container {
+		background-color: rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		opacity: 0;
+		width: 100vw;
+		transition: opacity 0.3s ease;
+	}
+
+	.placeholder-for-win-message .modal-container.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
+
+	.placeholder-for-win-message .modal {
+		background-color: #fff;
+		border-radius: 5px;
+		padding: 30px 50px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		width: 600px;
+		max-width: 100%;
+		text-align: center;
+	}
 
 
-.white-piece {
-    width: 20px;
-    height: 20px;
-    padding: 12px;
-    background-color: rgb(252, 249, 249);
-    border: 1px solid #808080;
-    border-radius: 50px;
-    
-    
-}
+	.placeholder-for-win-message form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
 
-@keyframes become_black_king { /* Animazioni matte per quando un pezzo diventa Re, colori da decidere*/
-    0% {background-color: rgb(0, 0, 0);}
-    50% {background-color: goldenrod;}
-    100% {background-color: black;}
-    /* Sarebbe figo aggiungere il simbolino di una corona dentro alla pedina quando diventa re, non dovrebbe essere troppo difficile in teoria*/
-}
+	.placeholder-for-win-message .modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 20px 0 12px 0;
+	}
 
-@keyframes become_white_king {
-    0% {background-color: white;}
-    50% {background-color: rgba(163, 0, 133, 0.848);}
-    100% {background-color: white;}
-    
-}
 
-/*.king.black-piece {*/
-.black-piece.king { 
-    background-color: purple; 
-    animation-name: become_black_king;
-    animation-iteration-count: infinite;
-    animation-duration: 1s;
-}
+	.placeholder-for-win-message form .user-details .input-box {
+		margin-bottom: 15px;
+		width: calc(100% / 2 - 20px);
+	}
 
-/*.king.white-piece {*/
-.white-piece.king { 
-    background-color: orange;
-    animation-name: become_white_king;
-    animation-iteration-count: infinite;
-    animation-duration: 1s; 
- } 
+	.placeholder-for-win-message form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
 
-p {
-    display: inline-block;
-}
+	.placeholder-for-win-message .user-details .input-box input {
+		height: 45px;
+		width: 100%;
+		outline: none;
+		font-size: 16px;
+		border-radius: 5px;
+		padding-left: 15px;
+		border: 1px solid #ccc;
+		border-bottom-width: 2px;
+		transition: all 0.3s ease;
+	}
 
-#divider {
-    font-size: 90px;
-    margin-left: 15px;
-    margin-right: 15px;
+	.placeholder-for-win-message .user-details .input-box input:focus,
+	.placeholder-for-win-message .user-details .input-box input:valid {
+		border-color: #b40000;
+	}
+
+	.placeholder-for-win-message form .bottone {
+		height: 45px;
+		margin: 35px 0
+	}
+
+	.placeholder-for-win-message form .bottone button {
+		height: 100%;
+		width: 100%;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		font-size: 18px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+	}
+
+	.placeholder-for-win-message form .bottone button:hover {
+		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+	}
+
+
+	@-webkit-keyframes AnimateBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@keyframes AnimateBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+
+	* {
+		margin: auto;
+	}
+
+	table {
+		border-style: solid;
+		border-width: 0.50rem;
+		border-color: rgb(70, 69, 69);
+		border-radius: 0.313rem;
+		background-color: white;
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: left;
+		height: 100vh;
+	}
+
+	td {
+		width: 1.063rem;
+		height: 4.063rem;
+		text-align: center;
+	}
+
+	.white {
+		background-color: #f1f1f1;
+		border: 1px solid lightgrey
+	}
+
+	.black {
+		background-color: #79032e;
+		border: 1px solid lightgrey;
+
+	}
+
+	.black-piece {
+		width: 1px;
+		height: 1px;
+		padding: 15px;
+		background-color: black;
+		border: 1px solid #808080;
+		border-radius: 50px;
+
+	}
+
+
+	.white-piece {
+		width: 1px;
+		height: 1px;
+		padding: 15px;
+		background-color: rgb(252, 249, 249);
+		border: 1px solid #808080;
+		border-radius: 50px;
+	}
+
+
+	@keyframes become_black_king {
+
+		/* Animazioni matte per quando un pezzo diventa Re, colori da decidere*/
+		0% {
+			background-color: rgb(0, 0, 0);
+		}
+
+		50% {
+			background-color: goldenrod;
+		}
+
+		100% {
+			background-color: black;
+		}
+
+		/* Sarebbe figo aggiungere il simbolino di una corona dentro alla pedina quando diventa re, non dovrebbe essere troppo difficile in teoria*/
+	}
+
+	@keyframes become_white_king {
+		0% {
+			background-color: white;
+		}
+
+		50% {
+			background-color: rgba(163, 0, 133, 0.848);
+		}
+
+		100% {
+			background-color: white;
+		}
+
+	}
+
+	.black-piece.king {
+		background-color: purple;
+		animation-name: become_black_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+	}
+
+	.white-piece.king {
+		background-color: orange;
+		animation-name: become_white_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+	}
+
+
+	p {
+		display: inline-block;
+	}
+
+	#divider {
+		font-size: 90px;
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+
+
 }
