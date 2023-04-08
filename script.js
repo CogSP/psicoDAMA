@@ -1,10 +1,5 @@
 /* GAME STATE DATA: declaration of the board, with all the pieces and their
 html's ids */
-/*
-TODO:
-    -aggiustare YouGottaEat(), ha problemi quando un re può mangiare
-    -aggiustare il fatto che la corona appare dopo una mossa ai re
- */
 
 const board = [ /*64 item array*/
     null, 0, null, 1, null, 2, null, 3,
@@ -19,7 +14,6 @@ const board = [ /*64 item array*/
 
 let found = false; //variabile che serve a capire se ci sono pedine che potrebbero mangiare
 
-//why am I using a variable?
 let findPiece = function(pieceId) { //La funzione restituisce, dato l'id html del pezzo, il corrispondente indice nella damiera di back-end
     let parsed = parseInt(pieceId);
     return board.indexOf(parsed);
@@ -74,8 +68,6 @@ let selectedPiece = {
 //piece is clicked, will invoke the function "getPlayerPieces"
 function givePiecesEventListeners() {
 
-    //console.log("we have " + cells.length + " cells\n");
-    //console.log("white has: " + whitesPieces.length + " pieces, while black has: " + blacksPieces.length + " pieces\n");
 
     if (turn) {
         //console.log("white's turn");
@@ -88,9 +80,6 @@ function givePiecesEventListeners() {
             blacksPieces[i].addEventListener("click", getPlayerPieces);
         }
     }
-    
-
-    //console.log("we gave all the pieces the click event listener\n");
 }
 
     /* END OF EVENT LISTENER CONFIGURATION */
@@ -100,7 +89,6 @@ function givePiecesEventListeners() {
 
 function getPlayerPieces() {
     //whites turn
-  
     if (turn) {
         //console.log("a white piece has been clicked");
         playerPieces = whitesPieces;
@@ -126,12 +114,15 @@ function removeCellonclick() {
 }
 
 // resetting the borders color to the initial value, so we can later just color the one that is selected
-
-// TODO: WHY WOULD WE ITERATE OVER ALL THE PIECES WHEN WE CAN JUST
-// RESET THE PIECES THAT WAS SELECTED BEFORE??? 
 function resetBorders() {
     for (let i = 0; i < playerPieces.length; i++) {
-        playerPieces[i].style.border = "1px solid #808080";
+        // playerPieces[i].style.border = "0.1em solid #808080";
+        
+        if (turn) {
+            playerPieces[i].style.background = "rgb(249, 252, 249)";
+        } else {
+            playerPieces[i].style.background = "black";
+        }
     } 
     resetSelectedPieceProperties();
     getSelectedPiece(); //here we start operating on the current selected piece
@@ -157,13 +148,13 @@ function resetSelectedPieceProperties() {
 function getSelectedPiece() {
     // the tutorial used "event.target.id" but event is now depreecated 
     // TODO: replace it
+
     selectedPiece.pieceId = parseInt(event.target.id);
+
+    console.log("UDDIO QUALCUNO HA CLICCATO IL PEZZO CON ID", selectedPiece.pieceId)
+
     selectedPiece.indexOfBoardPiece = findPiece(selectedPiece.pieceId);
     
-    //console.log("the clicked piece is " + selectedPiece.pieceId + 
-    //    " and it is in position: " + selectedPiece.indexOfBoardPiece + "\n");
-    
-   
     isPieceKing();
 }
 
@@ -173,6 +164,8 @@ function isPieceKing() {
 
     //element.classList give us the list of classes to which our element belongs
     //console.log("sto per controllare se l'elemento è king. L'elemento ha id = " + selectedPiece.pieceId);
+    console.log("il selected piece ha Id", selectedPiece.pieceId);
+    console.log("l'elemento è", document.getElementById(selectedPiece.pieceId));
     if (document.getElementById(selectedPiece.pieceId).classList.contains("king")) {
         selectedPiece.isKing = true;
     } else {
@@ -348,62 +341,85 @@ function YouGottaEat(index) {
 function checkAvailableJumpSpaces() {
 
     if (turn) {
+
         if (board[selectedPiece.indexOfBoardPiece + 14] === null 
         && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 7] >= 12) /*black pieces have id >= 12*/ {
+            console.log("QUA NCE DEVI ENTRA DIO CANE");
             selectedPiece.fourteenthSpace = true;
             // found = true;
-            
+        } else { /*PEFFOZA ALTRIMENTI C'È QUEL PROBLEMA CHE DICEVO A ISIDORO PER CUI CON LA MOSSA SOLITA PER FARE LA DOPPIA MANGIATA E DIVENTARE CON IL BIANCO RE POTEVO ANDARE DUE VOLTE A SINISTRA MANGIANDO SOPRA UNA PEDINA*/
+        /*NON HO ANCORA CAPITO DOVE PERO' FOURTEENTHSPACE VENIVA RESA TRUE ANCHE SE DOVEVA ESSERE FALSE*/ 
+            selectedPiece.fourteenthSpace = false;
         }
+
+
         if (board[selectedPiece.indexOfBoardPiece + 18] === null 
         && cells[selectedPiece.indexOfBoardPiece + 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 9] >= 12) {
             selectedPiece.eighteenthSpace = true;
             // found = true;
-            
+        } else {
+            selectedPiece.eighteenthSpace = false;
         }
+
+
         if (board[selectedPiece.indexOfBoardPiece - 14] === null 
         && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 7] >= 12) {
             selectedPiece.minusFourteenthSpace = true;
             // found = true;
-            
+        } else {
+            selectedPiece.minusFourteenthSpace = false;
         }
+
+
         if (board[selectedPiece.indexOfBoardPiece - 18] === null 
         && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 9] >= 12) {
             selectedPiece.minusEighteenthSpace = true;
             // found = true;
-           
+        } else {
+            selectedPiece.minusEighteenthSpace = false;
         }
+
     } else {
         if (board[selectedPiece.indexOfBoardPiece + 14] === null 
         && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 7] < 12 && board[selectedPiece.indexOfBoardPiece + 7] !== null) {
             selectedPiece.fourteenthSpace = true;
             // found = true;
-            
+        } else {
+            selectedPiece.fourteenthSpace = false;
         }
+
+
         if (board[selectedPiece.indexOfBoardPiece + 18] === null 
         && cells[selectedPiece.indexOfBoardPiece + 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 9] < 12 && board[selectedPiece.indexOfBoardPiece + 9] !== null) {
             selectedPiece.eighteenthSpace = true;
             // found = true;
-           
+        } else {
+            selectedPiece.eighteenthSpace = false;
         }
+
         if (board[selectedPiece.indexOfBoardPiece - 14] === null && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 7] < 12 
         && board[selectedPiece.indexOfBoardPiece - 7] !== null) {
             selectedPiece.minusFourteenthSpace = true;
             // found = true;
-            
+        } else {
+            selectedPiece.minusFourteenthSpace = false;
         }
+
+
         if (board[selectedPiece.indexOfBoardPiece - 18] === null && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 9] < 12
         && board[selectedPiece.indexOfBoardPiece - 9] !== null) {
             selectedPiece.minusEighteenthSpace = true;
-            // found = true;
-            
+            // found = true;   
+        } else {
+            selectedPiece.minusEighteenthSpace = false;
         }
     }
     
@@ -452,14 +468,14 @@ function checkPieceConditions() {
 
 function givePieceBorder() {
 
-    //console.log("Properties of this piece:\n id: " + selectedPiece.pieceId + " indexBoard: " + selectedPiece.indexOfBoardPiece + " isKing: " + selectedPiece.isKing + " seventhSpace: " + selectedPiece.seventhSpace +
-    //    " ninthSpace: " + selectedPiece.ninthSpace + " fourteenth: " + selectedPiece.fourteenthSpace + " eighteenthSpace: " + selectedPiece.eighteenthSpace + " minusSeventhSpace: " + selectedPiece.minusSeventhSpace + " minusNinthSpace: " + selectedPiece.minusNinthSpace
-    //    + " minusFourteenthSpace: " + selectedPiece.minusFourteenthSpace + " minusEighteenthSpace: " + selectedPiece.minusEighteenthSpace + "\n")
-
     if (selectedPiece.seventhSpace || selectedPiece.ninthSpace || selectedPiece.fourteenthSpace || selectedPiece.eighteenthSpace
         || selectedPiece.minusSeventhSpace || selectedPiece.minusNinthSpace || selectedPiece.minusFourteenthSpace || selectedPiece.minusEighteenthSpace) {
-            document.getElementById(selectedPiece.pieceId).style.border = "3px solid green"; //it's selected
-            console.log("hai selezionato il pezzo in posizione", selectedPiece.indexOfBoardPiece)
+            // document.getElementById(selectedPiece.pieceId).style.border = "0.3em solid green"; //it's selected
+            document.getElementById(selectedPiece.pieceId).style.background = "rgb(39, 199, 25)";
+            if (selectedPiece.isKing == true) {
+                document.getElementById(selectedPiece.pieceId).children.style.color = "green"; /*since we can't make the kings background green, we will color the crown*/   
+            }
+            console.log("hai selezionato il pezzo in posizione", selectedPiece.indexOfBoardPiece);
             giveCellsClick();
     } else {
         //this piece can't move
@@ -514,6 +530,7 @@ function makeMove(number) {
     if (turn) {
         if (selectedPiece.isKing) {                                     // these are two classes: white-piece and king
             cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
+            console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
             whitesPieces = document.querySelectorAll(".white-piece"); /* why am I recalculating this? */
         } else {
             cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece" id="${selectedPiece.pieceId}"></p>`;
@@ -522,6 +539,7 @@ function makeMove(number) {
     } else {   
         if (selectedPiece.isKing) {
             cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`;   //WARNING: must use the "backtick" ` symbol
+            console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
             blacksPieces = document.querySelectorAll(".black-piece"); 
         } else {
             cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece" id="${selectedPiece.pieceId}"></p>`;
@@ -546,16 +564,16 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
     board[indexOfBoardPiece] = null;
     board[modifiedIndex] = parseInt(selectedPiece.pieceId);
     if (turn && selectedPiece.pieceId < 12 && modifiedIndex >= 56) { //the piece reached the end: it become a king
-        document.getElementById(selectedPiece.pieceId).classList.add("king")
-        
+        document.getElementById(selectedPiece.pieceId).classList.add("king");
         cells[modifiedIndex].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
+        console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
         whitesPieces = document.querySelectorAll(".white-piece");
     
     }
     if (turn == false && selectedPiece.pieceId >= 12 && modifiedIndex <= 7) { //same but for black
-        document.getElementById(selectedPiece.pieceId).classList.add("king")
-
-        cells[modifiedIndex].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`;   //WARNING: must use the "backtick" ` symbol
+        document.getElementById(selectedPiece.pieceId).classList.add("king");
+        cells[modifiedIndex].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`; 
+        console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
         blacksPieces = document.querySelectorAll(".black-piece");
 
     }
@@ -782,5 +800,4 @@ const close = document.getElementById("form");
 
 
 //starting point: the cycle begins once the page has loaded
-//console.log("start of the program\n");
 givePiecesEventListeners();
