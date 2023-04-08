@@ -473,7 +473,7 @@ function givePieceBorder() {
             // document.getElementById(selectedPiece.pieceId).style.border = "0.3em solid green"; //it's selected
             document.getElementById(selectedPiece.pieceId).style.background = "rgb(39, 199, 25)";
             if (selectedPiece.isKing == true) {
-                document.getElementById(selectedPiece.pieceId).children.style.color = "green"; /*since we can't make the kings background green, we will color the crown*/   
+                //document.getElementById(selectedPiece.pieceId).children.style.color = "green"; /*since we can't make the kings background green, we will color the crown*/   
             }
             console.log("hai selezionato il pezzo in posizione", selectedPiece.indexOfBoardPiece);
             giveCellsClick();
