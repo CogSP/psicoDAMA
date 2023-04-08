@@ -22,7 +22,7 @@
     $result = pg_query($dbconnection, $query) or die('la query non va');
     pg_free_result($result);
     pg_close($dbconnection);
-    
+    //prova
 
 
 ?>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,33 +24,60 @@
         <div class="black-turn-text">
             Blacks turn
         </div>
+      
+
     </div>
 
 
     <!-- MODAL DIALOG-->
 
-    <div class="modal-container" id="modal-container-id">
+    
+
+    <?php
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $usr1 = $_POST["user1name"];
+        $usr2 = $_POST["user2name"];
+        $pwd1 = $_POST["user1pwd"];
+        $pwd2 = $_POST["user2pwd"];
+    
+        $dbconnection = pg_connect("host = localhost dbname = dama user = postgres password = kub3tt0SQL") or die('Could not connect');
+        $query = " 
+        SELECT username
+        FROM utente
+        WHERE (utente.password = '$pwd1' and utente.username = '$usr1') or
+            (utente.password = '$pwd2' and utente.username = '$usr2' )
+        ";
+        $result = pg_query($dbconnection, $query) or die('la query non va');
+        $array = pg_fetch_all($result);
+        if(count($array) == 2){ //In questo caso va rimosso il pop-up e si può startare la partita
+            echo $usr1;
+            echo "<br>";
+            echo $usr2;
+        
+        }
+        else{ //In questo caso il pop-up deve rimanere, e ci vorrebbe un messaggio di errore che chiede dati corretti
+            echo '
+        
+        <div class="modal-container show" id="modal-container-id">
         <div class="modal">
-          <!-- inizialmente <form action="register.php" method="post">-->
-            <iframe name="acaso" style = "display: none;"  ></iframe>
-            <form action="control.php" method="post" id = "form" target="acaso">  
+            <form action = "game.php" method="post" id = "form">  
             <div class="user-details">
               <div class="input-box">
                 <span class="details">User 1 name </span>
-                <input name = "user1name" type="text" placeholder="Enter first player's username" required>
+                <input name = "user1name" type="text" placeholder="Enter first player username" required>
               </div>
               <div class="input-box">
                 <span class="details">User 2 name</span>
-                <input name = "user2name" type="text" placeholder="Enter second player's username" required>
+                <input name = "user2name" type="text" placeholder="Enter second player username" required>
               </div>
               <div class="input-box">
                 <span class="details">User 1 password</span>
-                <input id = "pwd" name = "user1pwd" type="password" placeholder="Enter first player's password" required>
+                <input id = "pwd" name = "user1pwd" type="password" placeholder="Enter first player password" required>
                 <input type="button" onclick="showPwd()" value="Mostra/nascondi password">
               </div>
               <div class="input-box">
                 <span class="details">User 2 password</span>
-                <input id = "cpwd" name = "user2pwd" type="password" placeholder="Enter second player's password" required>
+                <input id = "cpwd" name = "user2pwd" type="password" placeholder="Enter second player password" required>
                 <input  type="button" onclick="showCpwd()" value="Mostra/nascondi password">
               </div>
             </div>
@@ -59,6 +87,54 @@
         </form>
         </div>
     </div>
+        
+        
+        
+        ';
+        }
+        pg_free_result($result);
+        pg_close($dbconnection);
+        }
+    else{
+        echo '
+        
+        <div class="modal-container show" id="modal-container-id">
+        <div class="modal">
+            <form action = "game.php" method="post" id = "form">  
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">User 1 name </span>
+                <input name = "user1name" type="text" placeholder="Enter first player username" required>
+              </div>
+              <div class="input-box">
+                <span class="details">User 2 name</span>
+                <input name = "user2name" type="text" placeholder="Enter second player username" required>
+              </div>
+              <div class="input-box">
+                <span class="details">User 1 password</span>
+                <input id = "pwd" name = "user1pwd" type="password" placeholder="Enter first player password" required>
+                <input type="button" onclick="showPwd()" value="Mostra/nascondi password">
+              </div>
+              <div class="input-box">
+                <span class="details">User 2 password</span>
+                <input id = "cpwd" name = "user2pwd" type="password" placeholder="Enter second player password" required>
+                <input  type="button" onclick="showCpwd()" value="Mostra/nascondi password">
+              </div>
+            </div>
+            <div class="bottone">
+                <button type="submit" id = "submit">Submit</button> 
+            </div>
+        </form>
+        </div>
+    </div>
+        
+        
+        
+        ';
+
+    }
+    
+    ?>
     
     <!-- END OF MODAL DIALOG-->
 
