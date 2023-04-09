@@ -5,8 +5,9 @@ $dbconnection = pg_connect("host = localhost dbname = dama user = postgres passw
 $query = "
     UPDATE utente
     SET vittorie = vittorie + 1
-    WHERE username = '$usr';
+    WHERE username = '$usr'; 
 ";
+//username è primary key quindi questa query funziona come deve
 $result = pg_query($dbconnection, $query) or die('la query non va');
 pg_free_result($result);
 pg_close($dbconnection);

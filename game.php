@@ -87,7 +87,7 @@
         pg_free_result($result);
         pg_close($dbconnection);
         }
-    else{
+    else{ //così semplicemente si torna sempre alla richiesta di login, magari si potrebbe aggiungere un alert di errore che dice di inserire dati corretti
         echo '
         
         <div class="modal-container show" id="modal-container-id">

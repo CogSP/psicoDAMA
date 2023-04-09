@@ -22,15 +22,11 @@ let findPiece = function(pieceId) { //La funzione restituisce, dato l'id html de
 
 // references to the web html page (DOM references)
 const cells = document.querySelectorAll("td"); /* list of all the "td"s in the  html file*/
-
 const pieces = document.querySelectorAll("p");
-
 let whitesPieces = document.querySelectorAll(".white-piece"); /* does it work? */
 let blacksPieces = document.querySelectorAll(".black-piece"); /* does it work? */
-// const whiteTurnText = document.querySelectorAll(".white-turn-text");
 const whiteTurnText = document.getElementById("wtt");
 const blackTurnText = document.getElementById("btt");
-// const blackTurnText = document.querySelectorAll(".black-turn-text");
 const divider = document.querySelector("#divider")
 
 
@@ -39,7 +35,7 @@ let turn = true;  /* true = white, false = black*/
 let whiteScore = 12; // how many pieces the white player currently has
 let blackScore = 12;
 let playerPieces;  // if its white's turn playerPieces = whitesPieces, otherwise 
-//playerPieces = blacksPieces
+                   //playerPieces = blacksPieces
 
 
 let selectedPiece = {
@@ -148,7 +144,7 @@ function resetSelectedPieceProperties() {
 // usint findPiece(), this will get us the board's index where the
 //selected piece is located
 function getSelectedPiece() {
-    // the tutorial used "event.target.id" but event is now depreecated 
+    // we use "event.target.id" but event is now depreecated 
     // TODO: replace it
 
     selectedPiece.pieceId = parseInt(event.target.id);
@@ -207,7 +203,7 @@ function getAvailableSpaces() {
 }
 
 
-function YouGottaEat(index) {
+function YouGottaEat(index) { //funzione che controlla se un certo pezzo sulla scacchiera (generico, non il selezionato) può mangiare
     
     console.log("controlliamo se il pezzo", index, "è obbligato a mangiare")
     
@@ -347,10 +343,10 @@ function checkAvailableJumpSpaces() {
         if (board[selectedPiece.indexOfBoardPiece + 14] === null 
         && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 7] >= 12) /*black pieces have id >= 12*/ {
-            console.log("QUA NCE DEVI ENTRA DIO CANE");
+            console.log("Non entrare qui!!!");
             selectedPiece.fourteenthSpace = true;
             // found = true;
-        } else { /*PEFFOZA ALTRIMENTI C'È QUEL PROBLEMA CHE DICEVO A ISIDORO PER CUI CON LA MOSSA SOLITA PER FARE LA DOPPIA MANGIATA E DIVENTARE CON IL BIANCO RE POTEVO ANDARE DUE VOLTE A SINISTRA MANGIANDO SOPRA UNA PEDINA*/
+        } else { /*PEFFORZA ALTRIMENTI C'È QUEL PROBLEMA CHE DICEVO A ISIDORO PER CUI CON LA MOSSA SOLITA PER FARE LA DOPPIA MANGIATA E DIVENTARE CON IL BIANCO RE POTEVO ANDARE DUE VOLTE A SINISTRA MANGIANDO SOPRA UNA PEDINA*/
         /*NON HO ANCORA CAPITO DOVE PERO' FOURTEENTHSPACE VENIVA RESA TRUE ANCHE SE DOVEVA ESSERE FALSE*/ 
             selectedPiece.fourteenthSpace = false;
         }
@@ -425,7 +421,7 @@ function checkAvailableJumpSpaces() {
         }
     }
     
-    for(let i = 0; i<64; i+=1){
+    for(let i = 0; i<64; i+=1){ //si controlla se qualche pezzo obbliga a mangiare, chiamando su tutti YouGottaEat()
         //Va fatta la verifica e in caso settato found a true 
         if(turn){
             if(board[i] !== null && board[i] <= 11)
@@ -598,7 +594,7 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
             selectedPiece.minusSeventhSpace = false;
             selectedPiece.ninthSpace = false;
             selectedPiece.minusNinthSpace = false;
-            checkAvailableJumpSpaces();
+            checkAvailableJumpSpaces(); //punto cruciale: se può continuare a mangiare DEVE farlo e quindi rimane il pezzo selezionato
             return;
         }
     }
@@ -722,7 +718,7 @@ function checkForWin() {
                 </div>
             </div>`;
 
-        //QUI SERVE QUALCOSA CHE FACCIA IN MODO DI FAR ACCEDERE AL DB E AUMENTARE LE VITTORIE DEL VINCITORE
+         //comunichiamo con il database per aggiornare il numero di vittorie del vincitore
         var xmlhttp = new XMLHttpRequest();
         console.log( "contenuto del testo:" + whiteTurnText.textContent)
         xmlhttp.open("GET","winner.php?q="+whiteTurnText.textContent, true );
@@ -762,7 +758,7 @@ function checkForWin() {
                 </div>
             </div>`;
             
-        //QUI SERVE QUALCOSA CHE FACCIA IN MODO DI FAR ACCEDERE AL DB E AUMENTARE LE VITTORIE DEL VINCITORE
+        //comunichiamo con il database per aggiornare il numero di vittorie del vincitore
         var xmlhttp = new XMLHttpRequest();
         console.log( "contenuto del testo:" + blackTurnText.textContent);
         xmlhttp.open("GET","winner.php?q="+blackTurnText.textContent, true );
@@ -776,18 +772,10 @@ function checkForWin() {
 function changePlayer() {
     if (turn) {
         turn = false;
-        // for (let i = 0; i < whiteTurnText.length; i++) {
-        //     whiteTurnText[i].style.color = "lightGrey";
-        //     blackTurnText[i].style.color = "black";
-        // }
         whiteTurnText.style.color = "lightGrey";
         blackTurnText.style.color = "black";
     } else {
         turn = true;
-        // for (let i = 0; i < blackTurnText.length; i++) {
-        //     blackTurnText[i].style.color = "lightGrey";
-        //     whiteTurnText[i].style.color = "black";
-        // }
         whiteTurnText.style.color = "black";
         blackTurnText.style.color = "lightGrey";
 

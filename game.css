@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
+*{
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	margin: 0;
+    padding: 0;
+	
+}
+
 @media (((min-height: 700px) ) and (min-width: 700px)) {
 
 
@@ -247,14 +254,14 @@
 	.white-turn-text {
 		text-align: center;
 		color: black;
-		font-family: "open sans";
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 		padding: 2px;
 		font-size: 25px;
 	}
 
 	.black-turn-text {
 		text-align: center;
-		font-family: "open sans";
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 		font-size: 25px;
 		padding: 2px;
 		color: lightgray;
@@ -586,14 +593,14 @@
 	.white-turn-text {
 		text-align: center;
 		color: black;
-		font-family: "open sans";
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 		padding: 0px;
 		font-size: 1.5625em;
 	}
 
 	.black-turn-text {
 		text-align: center;
-		font-family: "open sans";
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 		font-size: 1.5625em;
 		padding: 0px;
 		color: lightgray;
@@ -980,14 +987,14 @@
 	.white-turn-text {
 		text-align: center;
 		color: black;
-		font-family: "open sans";
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 		padding: 0px;
 		font-size: 1.5625em;
 	}
 
 	.black-turn-text {
 		text-align: center;
-		font-family: "open sans";
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 		font-size: 1.5625em;
 		padding: 0px;
 		color: lightgray;
