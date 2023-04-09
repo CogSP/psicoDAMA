@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,26 +15,12 @@
     <title>Let's FIGHT!</title>
 </head>
 <body id = "body">
-    <div class="desktop">
-        <div class="white-turn-text">
-            Whites turn
-        </div>
-        <br>
-        <!-- anche se questo divider fa schifo va messo per ora altrimenti non abbiamo l'id = "divider" per poter far partire l'animazione di fine gioco -->
-        <p id="divider">|</p>
-        <div class="black-turn-text">
-            Blacks turn
-        </div>
-      
 
-    </div>
-
-
+  
     <!-- MODAL DIALOG-->
 
-    
-
     <?php
+    
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $usr1 = $_POST["user1name"];
         $usr2 = $_POST["user2name"];
@@ -49,16 +36,21 @@
         ";
         $result = pg_query($dbconnection, $query) or die('la query non va');
         $array = pg_fetch_all($result);
-        if(count($array) == 2){ //In questo caso va rimosso il pop-up e si può startare la partita
-            echo $usr1;
-            echo "<br>";
-            echo $usr2;
-        
+        if(count($array) == 2){ //il pop-up non c'è più, mentre compaiono i nomi dei due giocatori in alto 
+            echo " 
+            <div class='desktop'>
+                <div id = 'wtt' class='white-turn-text' >$usr1</div>
+                <br>
+                <p id='divider'>|</p>
+                <div  id = 'btt' class='black-turn-text'>$usr2</div>
+            </div>
+            ";
+
         }
         else{ //In questo caso il pop-up deve rimanere, e ci vorrebbe un messaggio di errore che chiede dati corretti
             echo '
         
-        <div class="modal-container show" id="modal-container-id">
+    <div class="modal-container show" id="modal-container-id">
         <div class="modal">
             <form action = "game.php" method="post" id = "form">  
             <div class="user-details">
@@ -139,15 +131,16 @@
     <!-- END OF MODAL DIALOG-->
 
     <div class = "placeholder-for-win-message" id="placeholder-for-win-message-id">
-
+    <!-- questo diventa qualcosa effettivamente solo alla vittoria di un giocatore (vedi codice js) -->
     </div>
+
+    <!-- <div class ="trucco">
+   
+    </div> -->
 
 
     <main>
-    <table>  <!-- the structure of the checkers board: 8 x 8. The pieces moves only over "black" cells -->
-        <!-- we use <p> tag to "wrap" the white pieces, and <spam> for the white ones. Could we use <spam> 
-            for both of them? -->
-        
+    <table>  
         <tr>  <!-- Riga della table, con dentro gli elementi, ognuno una casella della damiera-->
             <td class = "white"></td> <!-- Casella  bianca, sempre vuota-->
             <td class = "black"><p class="white-piece" id = 0></p></td>  
@@ -198,8 +191,6 @@
             <td class = "black"></td>
         </tr>
         <tr> 
-            <!-- the tutorial used <span> instead of <p> to differenciate between white and black-->
-            <!-- when I do that, the black piecees seem beans--> 
             <td class = "black"><p class = "black-piece" id = 12></p></td> 
             <td class = "white"></td> 
             <td class = "black"><p class = "black-piece" id = 13></p></td> 

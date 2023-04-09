@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link rel="stylesheet" href="style.css"> <!-- this will link the css file-->
-    <title>PsicoDAMA</title>
+    <title>PSICODAMA</title>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
         </nav>
         
         <div class="content">
-            <h1>PsicoDAMA</h1>
+            <h1>PSICODAMA</h1>
             <a href="game.php">Join the fight!</a>
         </div>
     </div>

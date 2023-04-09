@@ -27,8 +27,10 @@ const pieces = document.querySelectorAll("p");
 
 let whitesPieces = document.querySelectorAll(".white-piece"); /* does it work? */
 let blacksPieces = document.querySelectorAll(".black-piece"); /* does it work? */
-const whiteTurnText = document.querySelectorAll(".white-turn-text");
-const blackTurnText = document.querySelectorAll(".black-turn-text");
+// const whiteTurnText = document.querySelectorAll(".white-turn-text");
+const whiteTurnText = document.getElementById("wtt");
+const blackTurnText = document.getElementById("btt");
+// const blackTurnText = document.querySelectorAll(".black-turn-text");
 const divider = document.querySelector("#divider")
 
 
@@ -690,16 +692,18 @@ function removeEventListeners() {
 
 // it also changes the player
 function checkForWin() {
-    if (blackScore === 0) {
+    if (blackScore === 0 ) {
         divider.style.display = "none";
-        for (let i = 0; i < whiteTurnText.length; i++) {
-            whiteTurnText[i].style.color = "black";
-            blackTurnText[i].style.display = "none";
-            whiteTurnText[i].textContent = "WHITE WINS!";
+        // for (let i = 0; i < whiteTurnText.length; i++) {
+        //     whiteTurnText[i].style.color = "black";
+        //     blackTurnText[i].style.display = "none";
+        //     whiteTurnText[i].textContent = "WHITE WINS!";
         
-            // aggiungiamo un pezzo HTML con il pop up
-            // NOTA: Importante che modal-container abbia come ulteriore classe show altrimenti non si vede il pop up
-            placeholder_for_win_message = document.getElementById("placeholder-for-win-message-id").innerHTML = 
+        //     // aggiungiamo un pezzo HTML con il pop up
+        //     // NOTA: Importante che modal-container abbia come ulteriore classe show altrimenti non si vede il pop up
+
+        // }
+        placeholder_for_win_message = document.getElementById("placeholder-for-win-message-id").innerHTML = 
             `<div class="modal-container show" id="modal-container-id">
                 <div class="modal">
                     <form action="" method="" id = "form">  
@@ -718,20 +722,28 @@ function checkForWin() {
                 </div>
             </div>`;
 
-        }
+        //QUI SERVE QUALCOSA CHE FACCIA IN MODO DI FAR ACCEDERE AL DB E AUMENTARE LE VITTORIE DEL VINCITORE
+        var xmlhttp = new XMLHttpRequest();
+        console.log( "contenuto del testo:" + whiteTurnText.textContent)
+        xmlhttp.open("GET","winner.php?q="+whiteTurnText.textContent, true );
+        xmlhttp.send();
+        console.log("richiesta fatta");
 
 
-    } else if (whiteScore === 0) {
+    } else if (whiteScore === 0 ) {
         divider.style.display = "none";
-        for (let i = 0; i < blackTurnText.length; i++) {            
-            blackTurnText[i].style.color = "black";
-            whiteTurnText[i].style.display = "none";
-            blackTurnText[i].textContent = "BLACK WINS!";
+
+        // for (let i = 0; i < blackTurnText.length; i++) {            
+        //     blackTurnText[i].style.color = "black";
+        //     whiteTurnText[i].style.display = "none";
+        //     blackTurnText[i].textContent = "BLACK WINS!";
 
 
-            // aggiungiamo un pezzo HTML con il pop up
-            // NOTA: Importante che modal-container abbia come ulteriore classe show altrimenti non si vede il pop up
-            placeholder_for_win_message = document.getElementById("placeholder-for-win-message-id").innerHTML = 
+        //     // aggiungiamo un pezzo HTML con il pop up
+        //     // NOTA: Importante che modal-container abbia come ulteriore classe show altrimenti non si vede il pop up
+            
+        // }
+        placeholder_for_win_message = document.getElementById("placeholder-for-win-message-id").innerHTML = 
             `<div class="modal-container show" id="modal-container-id">
                 <div class="modal">
                     <form action="" method="" id = "form">  
@@ -749,7 +761,14 @@ function checkForWin() {
                     </form>
                 </div>
             </div>`;
-        }
+            
+        //QUI SERVE QUALCOSA CHE FACCIA IN MODO DI FAR ACCEDERE AL DB E AUMENTARE LE VITTORIE DEL VINCITORE
+        var xmlhttp = new XMLHttpRequest();
+        console.log( "contenuto del testo:" + blackTurnText.textContent);
+        xmlhttp.open("GET","winner.php?q="+blackTurnText.textContent, true );
+        xmlhttp.send();
+        console.log("richiesta fatta");
+        
     }
     changePlayer();
 }
