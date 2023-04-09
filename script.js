@@ -709,7 +709,7 @@ function checkForWin() {
                     <form action="" method="" id = "form">  
                         <div class="user-details">
                             <div class="input-box">
-                                <span class="details">WHITE WINS! </span>
+                                <span class="details">${whiteTurnText.textContent} wins! </span>
                             </div>
                         </div>
                         <div class="bottone">
@@ -749,7 +749,7 @@ function checkForWin() {
                     <form action="" method="" id = "form">  
                         <div class="user-details">
                             <div class="input-box">
-                                <span class="details">BLACK WINS! </span>
+                                <span class="details"> ${blackTurnText.textContent} wins! </span>
                             </div>
                         </div>
                         <div class="bottone">
@@ -776,16 +776,21 @@ function checkForWin() {
 function changePlayer() {
     if (turn) {
         turn = false;
-        for (let i = 0; i < whiteTurnText.length; i++) {
-            whiteTurnText[i].style.color = "lightGrey";
-            blackTurnText[i].style.color = "black";
-        }
+        // for (let i = 0; i < whiteTurnText.length; i++) {
+        //     whiteTurnText[i].style.color = "lightGrey";
+        //     blackTurnText[i].style.color = "black";
+        // }
+        whiteTurnText.style.color = "lightGrey";
+        blackTurnText.style.color = "black";
     } else {
         turn = true;
-        for (let i = 0; i < blackTurnText.length; i++) {
-            blackTurnText[i].style.color = "lightGrey";
-            whiteTurnText[i].style.color = "black";
-        }
+        // for (let i = 0; i < blackTurnText.length; i++) {
+        //     blackTurnText[i].style.color = "lightGrey";
+        //     whiteTurnText[i].style.color = "black";
+        // }
+        whiteTurnText.style.color = "black";
+        blackTurnText.style.color = "lightGrey";
+
     }
     givePiecesEventListeners();
 
