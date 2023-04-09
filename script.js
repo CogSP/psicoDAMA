@@ -709,10 +709,10 @@ function checkForWin() {
                             </div>
                         </div>
                         <div class="bottone">
-                            <button type="button" onclick = "location.href='game.html'" id = "play again">Play Again</button> 
+                            <button type="button" onclick = "location.href='game.php'" id = "play again">Play Again</button> 
                         </div>
                         <div class="bottone">
-                            <button type="button" onclick = "location.href='index.html'" id = "home">Home</button> 
+                            <button type="button" onclick = "location.href='index.php'" id = "home">Home</button> 
                         </div>
                     </form>
                 </div>
@@ -741,10 +741,10 @@ function checkForWin() {
                             </div>
                         </div>
                         <div class="bottone">
-                            <button type="button" onclick = "location.href='game.html'" id = "play again">Play Again</button> 
+                            <button type="button" onclick = "location.href='game.php'" id = "play again">Play Again</button> 
                         </div>
                         <div class="bottone">
-                            <button type="button" onclick = "location.href='index.html'" id = "home">Home</button> 
+                            <button type="button" onclick = "location.href='index.php'" id = "home">Home</button> 
                         </div>
                     </form>
                 </div>
