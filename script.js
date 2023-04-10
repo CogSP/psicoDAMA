@@ -538,7 +538,15 @@ function makeMove(number) {
     // to save in javascript memory the new position of the piece
     if (turn) {
         if (selectedPiece.isKing) {                                     // these are two classes: white-piece and king
-            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
+           
+            if (screen.width >= 350 && screen.height >= 700) {
+                cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
+            }
+
+            else {
+                cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"></p>`;
+            }
+
             console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
             whitesPieces = document.querySelectorAll(".white-piece"); /* why am I recalculating this? */
         } else {
@@ -547,7 +555,15 @@ function makeMove(number) {
         }
     } else {   
         if (selectedPiece.isKing) {
-            cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`;   //WARNING: must use the "backtick" ` symbol
+
+            if (screen.width >= 350 && screen.height >= 700) {
+                cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`;   //WARNING: must use the "backtick" ` symbol
+            }
+            
+            else {
+                cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"></p>`;   //WARNING: must use the "backtick" ` symbol
+            }
+            
             console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
             blacksPieces = document.querySelectorAll(".black-piece"); 
         } else {
@@ -574,14 +590,33 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
     board[modifiedIndex] = parseInt(selectedPiece.pieceId);
     if (turn && selectedPiece.pieceId < 12 && modifiedIndex >= 56) { //the piece reached the end: it become a king
         document.getElementById(selectedPiece.pieceId).classList.add("king");
-        cells[modifiedIndex].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
+
+        if (screen.width >= 350 && screen.height >= 700) {
+            /*NOTA: se il pezzo diventà re quando lo schermo non rispetta questa proprietà e poi si ridimensiona lo schermo per rispettare la condizione
+            bisognerà aspettare di muovere il pezzo un'altra volta per far apparire la corona*/ 
+            cells[modifiedIndex].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
+        }
+        
+        else {
+            cells[modifiedIndex].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"></p>`;
+        }
+
         console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
         whitesPieces = document.querySelectorAll(".white-piece");
     
     }
     if (turn == false && selectedPiece.pieceId >= 12 && modifiedIndex <= 7) { //same but for black
         document.getElementById(selectedPiece.pieceId).classList.add("king");
-        cells[modifiedIndex].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`; 
+
+        if (screen.width >= 350 && screen.height >= 700) {
+            cells[modifiedIndex].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`; 
+        }
+
+
+        else {
+            cells[modifiedIndex].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"></p>`; 
+        }
+        
         console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
         blacksPieces = document.querySelectorAll(".black-piece");
 
