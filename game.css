@@ -1177,7 +1177,7 @@
 
 
 
-@media ((max-width: 350px) or (max-height: 700px)) {
+@media (max-width: 350px), (max-height: 700px) {
 	
 	i {
 		opacity: 0;
@@ -1190,6 +1190,10 @@
 
 	.black-piece {
 		border: 0;
+	}
+
+	table {
+		color:red;
 	}
 
 }

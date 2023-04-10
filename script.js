@@ -115,10 +115,20 @@ function removeCellonclick() {
 function resetBorders() {
     for (let i = 0; i < playerPieces.length; i++) {
         if (screen.width >= 350 && screen.height >= 700) {
+
+            if (turn){
+                playerPieces[i].style.background = "rgb(252, 249, 249)";
+            }
+
+            else {
+                playerPieces[i].style.background = "black";
+            }
+
             playerPieces[i].style.border = "0.1em solid #808080";
         }
         
         else {
+            playerPieces[i].style.border = "0";
             if (turn) {
                 playerPieces[i].style.background = "rgb(252, 249, 249)";
             }
@@ -476,10 +486,20 @@ function givePieceBorder() {
         || selectedPiece.minusSeventhSpace || selectedPiece.minusNinthSpace || selectedPiece.minusFourteenthSpace || selectedPiece.minusEighteenthSpace) {
             
             if (screen.width >= 350 && screen.height >= 700) {
+                
+                if (turn) {
+                   document.getElementById(selectedPiece.pieceId).style.background = "rgb(252, 249, 249)"
+                }
+
+                else {
+                   document.getElementById(selectedPiece.pieceId).style.background = "black"
+                }
+
                 document.getElementById(selectedPiece.pieceId).style.border = "0.3em solid green"; //it's selected
             }
 
             else {
+                document.getElementById(selectedPiece.pieceId).style.border = "0";
                 document.getElementById(selectedPiece.pieceId).style.background = "rgb(39, 199, 25)";
             }
 
