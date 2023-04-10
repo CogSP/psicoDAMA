@@ -231,14 +231,10 @@
 	}
 
 	.desktop {
-		/* Anche lui dovrebbe rimanere fermo mentre la pagina scorre, cosa che per ora non riesco a settare*/
 		margin: 0;
-		width: 20%;
+		width: 100%;
 		display: flex;
-		/*justify-content: space-between;*/
 	}
-
-
 
 	.desktop div {
 		border: 2px lightgrey solid;
@@ -253,7 +249,10 @@
 		text-align: center;
 		color: black;
 		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-		padding: 2px;
+		padding: 0;
+		border: 0;
+		margin: 0;
+		width: 50%;
 		font-size: 25px;
 	}
 
@@ -261,7 +260,10 @@
 		text-align: center;
 		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 		font-size: 25px;
-		padding: 2px;
+		padding: 0;
+		border: 0;
+		margin: 0;
+		width: 50%;
 		color: lightgray;
 	}
 
@@ -330,9 +332,15 @@
 	}
 
 	#divider {
-		font-size: 90px;
-		margin-left: 15px;
-		margin-right: 15px;
+		font-size: 1rem;
+		color: rgb(185, 139, 21);
+		text-align: center;
+		background-color: black;
+		margin: 0;
+		width: 5%;
+		border: 0.2rem;
+		border-style: solid; 
+		border-color: rgb(185, 139, 21);
 	}
 
 
@@ -386,7 +394,7 @@
 
 
 	table {
-
+		margin-top:5%;
 		border-style: solid;
 		border-width: 0.75rem;
 		border-color: rgb(70, 69, 69);
@@ -587,20 +595,34 @@
 		text-align: center;
 		color: black;
 		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-		padding: 0px;
+		padding: 0;
+		border: 0;
+		margin: 0;
 		font-size: 1.5625em;
+		width: 50%;
 	}
 
 	.black-turn-text {
 		text-align: center;
 		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 		font-size: 1.5625em;
-		padding: 0px;
+		padding: 0;
+		border: 0;
+		margin: 0;
 		color: lightgray;
+		width: 50%;
 	}
 
 	#divider {
-		/*per ora è vuoto perché non so come farlo*/
+		font-size: 1rem;
+		color: rgb(185, 139, 21);
+		text-align: center;
+		background-color: black;
+		margin: 0;
+		width: 5%;
+		border: 0.2rem;
+		border-style: solid; 
+		border-color: rgb(185, 139, 21);
 	}
 
 
@@ -977,20 +999,34 @@
 		text-align: center;
 		color: black;
 		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-		padding: 0px;
+		padding: 0;
+		border: 0;
+		margin: 0;
 		font-size: 1.5625em;
+		width: 50%;
 	}
 
 	.black-turn-text {
 		text-align: center;
 		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 		font-size: 1.5625em;
-		padding: 0px;
+		padding: 0;
+		border: 0;
+		margin: 0;
 		color: lightgray;
+		width: 50%;
 	}
 
 	#divider {
-		/*per ora è vuoto perché non so come farlo*/
+		font-size: 1rem;
+		color: rgb(185, 139, 21);
+		text-align: center;
+		background-color: black;
+		margin: 0;
+		width: 10%;
+		border: 0.2rem;
+		border-style: solid; 
+		border-color: rgb(185, 139, 21);
 	}
 
 
