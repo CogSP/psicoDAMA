@@ -114,13 +114,7 @@ function removeCellonclick() {
 // resetting the borders color to the initial value, so we can later just color the one that is selected
 function resetBorders() {
     for (let i = 0; i < playerPieces.length; i++) {
-        // playerPieces[i].style.border = "0.1em solid #808080";
-        
-        if (turn) {
-            playerPieces[i].style.background = "rgb(249, 252, 249)";
-        } else {
-            playerPieces[i].style.background = "black";
-        }
+        playerPieces[i].style.border = "0.1em solid #808080";
     } 
     resetSelectedPieceProperties();
     getSelectedPiece(); //here we start operating on the current selected piece
@@ -468,11 +462,15 @@ function givePieceBorder() {
 
     if (selectedPiece.seventhSpace || selectedPiece.ninthSpace || selectedPiece.fourteenthSpace || selectedPiece.eighteenthSpace
         || selectedPiece.minusSeventhSpace || selectedPiece.minusNinthSpace || selectedPiece.minusFourteenthSpace || selectedPiece.minusEighteenthSpace) {
-            // document.getElementById(selectedPiece.pieceId).style.border = "0.3em solid green"; //it's selected
-            document.getElementById(selectedPiece.pieceId).style.background = "rgb(39, 199, 25)";
-            if (selectedPiece.isKing == true) {
-                //document.getElementById(selectedPiece.pieceId).children.style.color = "green"; /*since we can't make the kings background green, we will color the crown*/   
-            }
+            
+            
+            document.getElementById(selectedPiece.pieceId).style.border = "0.3em solid green"; //it's selected
+          
+
+            // document.getElementById(selectedPiece.pieceId).style.background = "rgb(39, 199, 25)";
+          
+
+
             console.log("hai selezionato il pezzo in posizione", selectedPiece.indexOfBoardPiece);
             giveCellsClick();
     } else {

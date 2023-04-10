@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
-*{
+* {
 	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 	margin: 0;
     padding: 0;
 	
 }
+
 
 @media (((min-height: 700px) ) and (min-width: 700px)) {
 
@@ -33,8 +34,7 @@
 		pointer-events: auto;
 		opacity: 1;
 	}
-
-	/* qua ci andrebbe .modal ma lo abbiamo modificato */
+	
 
 	form .input-box span.details {
 		display: block;
@@ -230,8 +230,6 @@
 		margin: auto;
 	}
 
-	/*qua ci sarebbero da table a main ma sono stati modificati*/
-
 	.desktop {
 		/* Anche lui dovrebbe rimanere fermo mentre la pagina scorre, cosa che per ora non riesco a settare*/
 		margin: 0;
@@ -270,7 +268,7 @@
 
 	.white {
 		background-color: #f1f1f1;
-		border: 1px solid lightgrey
+		border: 1px solid lightgrey;
 	}
 
 	.black {
@@ -279,8 +277,6 @@
 		border: 1px solid lightgrey;
 
 	}
-
-	/* qua ci sandrebbero white-piece e black-piece ma li abbiamo modificati */
 
 	@keyframes become_black_king {
 
@@ -373,7 +369,7 @@
 		height: 20px;
 		padding: 12px;
 		background-color: black;
-		border: 1px solid #808080;
+		border: 0.1em solid #808080;
 		border-radius: 50px;
 
 	}
@@ -384,7 +380,7 @@
 		height: 20px;
 		padding: 12px;
 		background-color: rgb(252, 249, 249);
-		border: 1px solid #808080;
+		border: 0.1em solid #808080;
 		border-radius: 50px;
 	}
 
@@ -505,6 +501,7 @@
 		padding: 0px;
 		background-color: rgb(249, 252, 249);
 		margin: 25%;
+		border: 0.1em solid #808080;
 		border-radius: 50%;
 	}
 
@@ -515,6 +512,7 @@
 		background-color: black;
 		/* border: 0.1em solid #808080; */
 		margin: 25%;
+		border: 0.1em solid #808080;
 		border-radius: 50%;
 	}
 
@@ -550,19 +548,14 @@
 	} 
 
 
-	i {
-		/*su mobile minore di 700x700 scompare la corona per ora perché non so come sistemare*/
-		opacity: 0;
-	}
-
 	.black-piece.king {
 		background-color: purple;
 		animation-name: become_black_king;
 		animation-iteration-count: infinite;
 		animation-duration: 1s;
-		width: 82%;
+		/* width: 82%;
 		height: 75%;
-		margin: 10%;
+		margin: 10%; */
 	}
 
 	.white-piece.king {
@@ -570,9 +563,9 @@
 		animation-name: become_white_king;
 		animation-iteration-count: infinite;
 		animation-duration: 1s;
-		width: 82%;
+		/* width: 82%;
 		height: 75%;
-		margin: 10%;
+		margin: 10%; */
 	}
 
 
@@ -899,6 +892,7 @@
 		padding: 0px;
 		background-color: rgb(249, 252, 249);
 		margin: 25%;
+		border: 0.1em solid #808080;
 		border-radius: 50%;
 	}
 
@@ -909,6 +903,7 @@
 		background-color: black;
 		/* border: 0.1em solid #808080; */
 		margin: 25%;
+		border: 0.1em solid #808080;
 		border-radius: 50%;
 	}
 
@@ -943,20 +938,14 @@
 		}
 	} 
 
-
-	i {
-		/*su mobile minore di 700x700 scompare la corona per ora perché non so come sistemare*/
-		opacity: 0;
-	}
-
 	.black-piece.king {
 		background-color: purple;
 		animation-name: become_black_king;
 		animation-iteration-count: infinite;
 		animation-duration: 1s;
-		width: 82%;
+		/* width: 82%;
 		height: 75%;
-		margin: 10%;
+		margin: 10%; */
 	}
 
 	.white-piece.king {
@@ -964,9 +953,9 @@
 		animation-name: become_white_king;
 		animation-iteration-count: infinite;
 		animation-duration: 1s;
-		width: 82%;
+		/* width: 82%;
 		height: 75%;
-		margin: 10%;
+		margin: 10%; */
 	}
 
 
@@ -1187,3 +1176,11 @@
 }
 
 
+
+@media (max-width: 350px) {
+	
+	i {
+		opacity: 0;
+	}
+	
+}
