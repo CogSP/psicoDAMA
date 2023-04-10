@@ -114,7 +114,19 @@ function removeCellonclick() {
 // resetting the borders color to the initial value, so we can later just color the one that is selected
 function resetBorders() {
     for (let i = 0; i < playerPieces.length; i++) {
-        playerPieces[i].style.border = "0.1em solid #808080";
+        if (screen.width >= 350 && screen.height >= 700) {
+            playerPieces[i].style.border = "0.1em solid #808080";
+        }
+        
+        else {
+            if (turn) {
+                playerPieces[i].style.background = "rgb(252, 249, 249)";
+            }
+            
+            else {
+                playerPieces[i].style.background = "black";
+            }
+        }
     } 
     resetSelectedPieceProperties();
     getSelectedPiece(); //here we start operating on the current selected piece
@@ -463,12 +475,13 @@ function givePieceBorder() {
     if (selectedPiece.seventhSpace || selectedPiece.ninthSpace || selectedPiece.fourteenthSpace || selectedPiece.eighteenthSpace
         || selectedPiece.minusSeventhSpace || selectedPiece.minusNinthSpace || selectedPiece.minusFourteenthSpace || selectedPiece.minusEighteenthSpace) {
             
-            
-            document.getElementById(selectedPiece.pieceId).style.border = "0.3em solid green"; //it's selected
-          
+            if (screen.width >= 350 && screen.height >= 700) {
+                document.getElementById(selectedPiece.pieceId).style.border = "0.3em solid green"; //it's selected
+            }
 
-            // document.getElementById(selectedPiece.pieceId).style.background = "rgb(39, 199, 25)";
-          
+            else {
+                document.getElementById(selectedPiece.pieceId).style.background = "rgb(39, 199, 25)";
+            }
 
 
             console.log("hai selezionato il pezzo in posizione", selectedPiece.indexOfBoardPiece);
