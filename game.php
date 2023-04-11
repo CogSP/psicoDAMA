@@ -39,10 +39,10 @@
         if(count($array) == 2){ //il pop-up non c'è più, mentre compaiono i nomi dei due giocatori in alto 
             echo " 
             <div class='desktop'>
-                <div id = 'wtt' class='white-turn-text' >$usr1 (WHITE)</div>
+                <div name = $usr1 id = 'wtt' class='white-turn-text' >$usr1 (WHITE)</div>
                 <br>
                 <p id='divider'>VS</p>
-                <div  id = 'btt' class='black-turn-text'>$usr2 (BLACK)</div>
+                <div name = $usr2 id = 'btt' class='black-turn-text'>$usr2 (BLACK)</div>
             </div>
             ";
 

@@ -786,8 +786,8 @@ function checkForWin() {
 
          //comunichiamo con il database per aggiornare il numero di vittorie del vincitore
         var xmlhttp = new XMLHttpRequest();
-        console.log( "contenuto del testo:" + whiteTurnText.textContent)
-        xmlhttp.open("GET","winner.php?q="+whiteTurnText.textContent, true );
+        console.log( "contenuto del testo:" + whiteTurnText.getAttribute("name"))
+        xmlhttp.open("GET","winner.php?q="+whiteTurnText.getAttribute("name"), true );
         xmlhttp.send();
         console.log("richiesta fatta");
 
@@ -826,8 +826,8 @@ function checkForWin() {
             
         //comunichiamo con il database per aggiornare il numero di vittorie del vincitore
         var xmlhttp = new XMLHttpRequest();
-        console.log( "contenuto del testo:" + blackTurnText.textContent);
-        xmlhttp.open("GET","winner.php?q="+blackTurnText.textContent, true );
+        console.log( "contenuto del testo:" + blackTurnText.getAttribute("name"));
+        xmlhttp.open("GET","winner.php?q="+blackTurnText.getAttribute("name"), true );
         xmlhttp.send();
         console.log("richiesta fatta");
         
