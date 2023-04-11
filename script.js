@@ -577,7 +577,7 @@ function makeMove(number) {
         if (selectedPiece.isKing) {
 
             if (screen.width >= 350 && screen.height >= 700) {
-                cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`;   //WARNING: must use the "backtick" ` symbol
+                cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip" style="color: white;"></i></p>`;   //WARNING: must use the "backtick" ` symbol
             }
             
             else {
@@ -629,7 +629,7 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
         document.getElementById(selectedPiece.pieceId).classList.add("king");
 
         if (screen.width >= 350 && screen.height >= 700) {
-            cells[modifiedIndex].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-regular fa-crown fa-flip" style="color: #ebebeb;"></i></p>`; 
+            cells[modifiedIndex].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip" style="color: white;"></i></p>`; 
         }
 
 
