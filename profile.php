@@ -21,19 +21,19 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
-            <input name = "fullname" type="text" placeholder="Enter your name" required>
+            <input id = "fullname" name = "fullname" type="text" placeholder="Enter your name" required>
           </div>
           <div class="input-box">
             <span class="details">Username</span>
-            <input name = "username" type="text" placeholder="Enter your username" required>
+            <input id = "username" name = "username" type="text" placeholder="Enter your username" required>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input name = "email" type="email" placeholder="Enter your email" required>
+            <input id = "email" name = "email" type="email" placeholder="Enter your email" required>
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input name = "number" type="tel" pattern="\+[0-9][0-9][0-9]?[0-9]?-[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Format: +prefix-xxx-xxx-xxxx" required>
+            <input id = "number" name = "number" type="tel" pattern="\+[0-9][0-9][0-9]?[0-9]?-[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Format: +prefix-xxx-xxx-xxxx" required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>

@@ -4,11 +4,12 @@
 const form = document.querySelector("form");
 const password = document.getElementById("pwd");
 const conferma = document.getElementById("cpwd");
-
+const username = document.getElementById("username");
+const fullname = document.getElementById("fullname")
 
 conferma.addEventListener("input",(event)=>{
   if(password.value!= conferma.value){
-    showError(1);
+    conferma.setCustomValidity("passwords need to match!")
   }
   else{
     conferma.setCustomValidity(""); //forse non serve
@@ -16,11 +17,31 @@ conferma.addEventListener("input",(event)=>{
   }
 });
 
-function showError(num){
-    if(num == 1){
-        conferma.setCustomValidity("passwords need to match!")
+username.addEventListener("input", (event)=>{
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = () => {
+        if(xmlhttp.readyState === 4) {
+            if(xmlhttp.status === 200) {
+                testo = xmlhttp.responseText;
+                console.log("Risposta:" + testo);
+                if(testo == "no"){
+                    username.setCustomValidity("Username già in utilizzo!");
+                }
+                else{
+                    username.setCustomValidity("");
+                }
+                
+            } else {
+                console.log('Error Code: ' + xmlhttp.status);
+                console.log('Error Message: ' + xmlhttp.statusText);
+            }
+        }
     }
-    if(num == 2){
-        
-    }
-}
+
+
+    xmlhttp.open("GET","checks.php?q="+username.value, true );
+    xmlhttp.send();
+  
+})
+
