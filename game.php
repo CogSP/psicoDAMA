@@ -23,48 +23,26 @@
   
     <!-- MODAL DIALOG-->
 
-    <?php
-    
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $usr1 = $_POST["user1name"];
-        $usr2 = $_POST["user2name"];
-        $pwd1 = $_POST["user1pwd"];
-        $pwd2 = $_POST["user2pwd"];
-    
-        $dbconnection = pg_connect("host = localhost dbname = dama user = postgres password = kub3tt0SQL") or die('Could not connect');
-        $query = " 
-        SELECT username
-        FROM utente
-        WHERE (utente.password = '$pwd1' and utente.username = '$usr1') or
-            (utente.password = '$pwd2' and utente.username = '$usr2' )
-        ";
-        $result = pg_query($dbconnection, $query) or die('la query non va');
-        $array = pg_fetch_all($result);
-        if(count($array) == 2){ //il pop-up non c'è più, mentre compaiono i nomi dei due giocatori in alto 
-            echo " 
+
             <div class='desktop'>
-                <div name = $usr1 id = 'wtt' class='white-turn-text' >$usr1 (WHITE)</div>
+                <div name = 'boh1' id = 'wtt' class='white-turn-text' ></div>
                 <br>
                 <p id='divider'>VS</p>
-                <div name = $usr2 id = 'btt' class='black-turn-text'>$usr2 (BLACK)</div>
+                <div name = 'boh2' id = 'btt' class='black-turn-text'></div>
             </div>
-            ";
-
-        }
-        else{ //In questo caso il pop-up deve rimanere, e ci vorrebbe un messaggio di errore che chiede dati corretti
-            echo '
+            
         
-    <div class="modal-container show" id="modal-container-id">
+    <div class="modal-container" id="modal-container-id">
         <div class="modal">
-            <form action = "game.php" method="post" id = "form">  
+            <form id = "form">  
             <div class="user-details">
               <div class="input-box">
                 <span class="details">User 1 name </span>
-                <input name = "user1name" type="text" placeholder="Enter first player username" required>
+                <input id = "user1name" name = "user1name" type="text" placeholder="Enter first player username" required>
               </div>
               <div class="input-box">
                 <span class="details">User 2 name</span>
-                <input name = "user2name" type="text" placeholder="Enter second player username" required>
+                <input id = "user2name" name = "user2name" type="text" placeholder="Enter second player username" required>
               </div>
               <div class="input-box">
                 <span class="details">User 1 password</span>
@@ -84,54 +62,6 @@
         </div>
     </div>
         
-        
-        
-        ';
-        }
-        pg_free_result($result);
-        pg_close($dbconnection);
-        }
-    else{ //così semplicemente si torna sempre alla richiesta di login, magari si potrebbe aggiungere un alert di errore che dice di inserire dati corretti
-        echo '
-        
-        <div class="modal-container show" id="modal-container-id">
-        <div class="modal">
-            <form action = "game.php" method="post" id = "form">  
-            <div class="user-details">
-              <div class="input-box">
-                <span class="details">User 1 name </span>
-                <input name = "user1name" type="text" placeholder="Enter first player username" required>
-              </div>
-              <div class="input-box">
-                <span class="details">User 2 name</span>
-                <input name = "user2name" type="text" placeholder="Enter second player username" required>
-              </div>
-              <div class="input-box">
-                <span class="details">User 1 password</span>
-                <input id = "pwd" name = "user1pwd" type="password" placeholder="Enter first player password" required>
-                <input type="button" onclick="showPwd()" value="Mostra/nascondi password">
-              </div>
-              <div class="input-box">
-                <span class="details">User 2 password</span>
-                <input id = "cpwd" name = "user2pwd" type="password" placeholder="Enter second player password" required>
-                <input  type="button" onclick="showCpwd()" value="Mostra/nascondi password">
-              </div>
-            </div>
-            <div class="bottone">
-                <button type="submit" id = "submit">Submit</button> 
-            </div>
-        </form>
-        </div>
-    </div>
-        
-        
-        
-        ';
-
-    }
-    
-    ?>
-    
     <!-- END OF MODAL DIALOG-->
 
     <div class = "placeholder-for-win-message" id="placeholder-for-win-message-id">

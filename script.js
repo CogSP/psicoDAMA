@@ -857,24 +857,83 @@ const modal_container = document.getElementById("modal-container-id");
 
 const close = document.getElementById("form");
 
-//modal_container.classList.add('show');
+modal_container.classList.add('show');
 
-// function removeOnSubmit(event) {
-   
-   
-//     window.setTimeout(function () {
-//         // rimuovo proprio il form dalla pagina in modo che non impedisca di selezionare le pedine 
-//         modal_container.classList.remove('show');
-//         event.preventDefault();
-//         var parent = document.getElementById("body")
-//         var child = document.getElementById("modal-container-id")
-//         parent.removeChild(child)
-//     }, 1000) // metto 1 secondo di attesa in modo che la transizione di 0.3 secondi di CSS in model-container venga eseguita;
 
-    
-// }
+   const usr1 = document.getElementById("user1name");
+   const usr2 = document.getElementById("user2name");
+   const pwd1 = document.getElementById("pwd");
+   const pwd2 = document.getElementById("cpwd");
 
-// close.addEventListener("submit", removeOnSubmit);
+   pwd1.addEventListener("input", (event)=>{
+   var xmlhttp = new XMLHttpRequest();
+   xmlhttp.onreadystatechange = () => {
+    if(xmlhttp.readyState === 4) {
+        if(xmlhttp.status === 200){
+            testo = xmlhttp.responseText;
+            console.log("Risposta:" + testo);
+            if(testo == "no"){
+                usr1.setCustomValidity("Inserire username/password corretti!");
+                pwd1.setCustomValidity("Inserire username/password corretti!");
+            }
+            else{
+                usr1.setCustomValidity("");
+                pwd1.setCustomValidity("");
+            }
+        }
+    }
+   }
+
+
+   xmlhttp.open("GET",`popup.php?usr=${usr1.value}&pwd=${pwd1.value}`, true );
+   xmlhttp.send();
+
+
+
+   })
+
+   pwd2.addEventListener("input", (event)=>{
+   var xmlhttp = new XMLHttpRequest();
+   xmlhttp.onreadystatechange = () => {
+    if(xmlhttp.readyState === 4) {
+        if(xmlhttp.status === 200){
+            testo = xmlhttp.responseText;
+                console.log("Risposta:" + testo);
+                if(testo == "no"){
+                    usr2.setCustomValidity("Inserire username/password corretti!");
+                    pwd2.setCustomValidity("Inserire username/password corretti!");
+                }
+                else{
+                    usr2.setCustomValidity("");
+                    pwd2.setCustomValidity("");
+                }
+        }
+    }
+   }
+   xmlhttp.open("GET",`popup.php?usr=${usr2.value}&pwd=${pwd2.value}`, true );
+   xmlhttp.send();
+   })
+
+close.addEventListener("submit", (event)=>{
+    event.preventDefault();
+    testo1 = usr1.value;
+    testo2 = usr2.value;
+    whiteTurnText.textContent = `${testo1} (WHITE)`;
+    blackTurnText.textContent = `${testo2} (BLACK)`;
+    whiteTurnText.setAttribute("name", testo1 );
+    blackTurnText.setAttribute("name", testo2);
+    modal_container.classList.remove('show');
+    window.setTimeout(function () {
+        // rimuovo proprio il form dalla pagina in modo che non impedisca di selezionare le pedine 
+        
+        var parent = document.getElementById("body");
+        var child = document.getElementById("modal-container-id");
+        parent.removeChild(child);
+    }, 1000)
+
+});
+
+
 
 
 //starting point: the cycle begins once the page has loaded
