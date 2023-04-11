@@ -3,7 +3,7 @@
     
 }
 
-body{
+/* body{
     background-size: 300% 300%;
     background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
   -webkit-animation: AnimateBG 5s ease infinite;
@@ -31,7 +31,7 @@ body{
       100% {
         background-position: 0% 50%;
       }
-      }
+      } */
     h1{
         text-align: center;
         color: goldenrod;

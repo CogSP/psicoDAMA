@@ -1,7 +1,11 @@
 <html>
     <head>
     <link rel="stylesheet" href="profile.css"> <!-- Uso lo stesso css di profile.php -->
+    <link rel="stylesheet" href="background.css">
     </head>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
 <body>
 <?php
     
@@ -18,7 +22,7 @@
     //per qualche motivo mi dice che le funzioni non esistono ANCHE SE l'highlighting le consiglia e funzionano
 
     //Inserisco il nuovo utente nel db con zero vittorie
-    $query ="INSERT INTO utente VALUES('$username', '$fullname', '$email', '$number', '$password', 0)";
+    $query ="INSERT INTO utente VALUES('$username', '$fullname', '$email', '$password', 0, '$number')";
     $result = pg_query($dbconnection, $query) or die('la query non va');
     pg_free_result($result);
     pg_close($dbconnection);

@@ -11,12 +11,12 @@
 @media (((min-height: 700px) ) and (min-width: 700px)) {
 
 
-	body {
+	/* body {
 		background-size: 300% 300%;
 		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
 		-webkit-animation: AnimateBG 5s ease infinite;
 		animation: AnimateBG 5s ease infinite;
-	}
+	} */
 
 	.modal-container {
 		background-color: rgba(0, 0, 0, 0.3);
@@ -197,7 +197,7 @@
 
 	/* fine nuovo */
 
-	@-webkit-keyframes AnimateBG {
+	/* @-webkit-keyframes AnimateBG {
 		0% {
 			background-position: 0% 50%;
 		}
@@ -223,7 +223,7 @@
 		100% {
 			background-position: 0% 50%;
 		}
-	}
+	} */
 
 
 	* {
@@ -424,14 +424,14 @@
 	body {
 		width: 100%;
 		height: 100%;
-		background-size: 300% 300%;
+		/* background-size: 300% 300%;
 		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
 			-webkit-animation: AnimateBG 5s ease infinite;
-		animation: AnimateBG 5s ease infinite;
+		animation: AnimateBG 5s ease infinite; */
 	}
 
 
-	@-webkit-keyframes AnimateBG {
+	/* @-webkit-keyframes AnimateBG {
 		0% {
 			background-position: 0% 50%;
 		}
@@ -457,7 +457,7 @@
 		100% {
 			background-position: 0% 50%;
 		}
-	}
+	} */
 
 
 
@@ -829,14 +829,14 @@
 	body {
 		width: 100%;
 		height: 100%;
-		background-size: 300% 300%;
+		/* background-size: 300% 300%;
 		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
 			-webkit-animation: AnimateBG 5s ease infinite;
-		animation: AnimateBG 5s ease infinite;
+		animation: AnimateBG 5s ease infinite; */
 	}
 
 
-	@-webkit-keyframes AnimateBG {
+	/* @-webkit-keyframes AnimateBG {
 		0% {
 			background-position: 0% 50%;
 		}
@@ -862,7 +862,7 @@
 		100% {
 			background-position: 0% 50%;
 		}
-	}
+	} */
 
 
 

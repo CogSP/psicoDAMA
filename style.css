@@ -6,7 +6,7 @@
     box-sizing: border-box;  /* without it there is blank space on the right */
 }
 
-body{
+/* body{
     background-size: 300% 300%;
     background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #790303 100%);
     -webkit-animation: AnimateBG 5s ease infinite;
@@ -40,44 +40,10 @@ body{
       background-position: 0% 50%;
       
     }
-    }
-     
+    } */
 
-/* 
-       body {
-        display: block;
-        font-size: 52px;
-        color: transparent;
-        background-color: black;
-      }
-        body::before, body::after {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        width: 3em;
-        height: 3em;
-        content: '.';
-        mix-blend-mode: screen;
-        animation: 44s -27s move infinite ease-in-out alternate;
-      }
-      body::before {
-        text-shadow:  0.2764196111em 0.2061782399em 7px rgba(255, 251, 0, 0.9), 1.5007040245em -0.2277132523em 7px rgba(140, 0, 255, 0.9), 0.2976218671em 0.9178449821em 7px rgba(255, 51, 0, 0.9), 1.5614509066em 0.5640778723em 7px rgba(255, 183, 0, 0.9), 1.9151531614em 1.2376543184em 7px rgba(187, 255, 0, 0.9), -0.1327862361em 2.0859490943em 7px rgba(255, 0, 60, 0.9), 1.6626406294em 2.23810609em 7px rgba(255, 0, 157, 0.9), -0.1801898003em 0.6589371125em 7px rgba(255, 0, 106, 0.9), 1.6689075256em 0.4756056452em 7px rgba(255, 183, 0, 0.9), 1.7028908107em 2.1913321492em 7px rgba(0, 255, 17, 0.9), 2.3695423658em 2.1461473823em 7px rgba(132, 255, 0, 0.9), -0.4876918709em 2.2161353993em 7px rgba(0, 230, 255, 0.9), 2.1921338391em 0.7142639445em 7px rgba(0, 153, 255, 0.9), 0.5951604336em 0.0072681673em 7px rgba(255, 0, 76, 0.9), 2.0086929041em 0.7566815099em 7px rgba(0, 51, 255, 0.9), 1.9710216976em -0.2195493806em 7px rgba(255, 0, 234, 0.9), 0.6987662163em 1.3693892988em 7px rgba(0, 4, 255, 0.9), 1.0401977196em 0.0192123305em 7px rgba(183, 255, 0, 0.9), 0.7760195999em 1.8732466141em 7px rgba(0, 255, 145, 0.9), 0.6683606418em 0.6372489939em 7px rgba(213, 255, 0, 0.9), 2.0733616662em 1.2930646244em 7px rgba(0, 255, 21, 0.9), 0.6259215321em 2.0363420395em 7px rgba(102, 255, 0, 0.9), 2.1326034784em 1.0178326296em 7px rgba(255, 0, 47, 0.9), 1.2946743899em 1.9001754855em 7px rgba(255, 0, 221, 0.9), 0.0763998109em 2.0727331366em 7px rgba(0, 208, 255, 0.9), 2.4304726943em 1.1795842851em 7px rgba(0, 98, 255, 0.9), 0.2804820457em 1.1843710377em 7px rgba(0, 255, 94, 0.9), 0.044515311em 0.3234793203em 7px rgba(111, 255, 0, 0.9), -0.2708138659em 2.1935856895em 7px rgba(0, 234, 255, 0.9), 1.0258865014em -0.3890602071em 7px rgba(85, 0, 255, 0.9), 0.0577059679em 0.3674947796em 7px rgba(0, 255, 145, 0.9), 1.2457249443em 0.5908935797em 7px rgba(0, 255, 111, 0.9), 1.6403558325em -0.28036506em 7px rgba(0, 255, 230, 0.9), 0.5943621118em 1.3229351835em 7px rgba(255, 0, 64, 0.9), 0.3333678566em 1.1633549718em 7px rgba(0, 255, 123, 0.9), 1.9415827968em 2.2618800661em 7px rgba(0, 255, 170, 0.9), 1.0948197537em 0.1766858695em 7px rgba(242, 255, 0, 0.9), 0.5581951146em 1.2826013341em 7px rgba(157, 0, 255, 0.9), 0.3973225839em 0.3185283969em 7px rgba(255, 4, 0, 0.9), 0.8484030838em -0.28262986em 7px rgba(217, 255, 0, 0.9), 2.3019103467em -0.3616910902em 7px rgba(255, 221, 0, 0.9);
-        animation-duration: 44s;
-        animation-delay: -27s;
-      }
-      body::after {
-        text-shadow:  -0.0574342327em 1.5905728303em 7px rgba(255, 225, 0, 0.9), 2.0530764617em 1.4434297089em 7px rgba(0, 255, 153, 0.9), 2.3188715413em 2.4736773888em 7px rgba(255, 17, 0, 0.9), 0.7232413861em 0.8833973046em 7px rgba(0, 255, 98, 0.9), 0.7619482033em -0.2531666782em 7px rgba(47, 0, 255, 0.9), 1.6411120548em 1.5128280046em 7px rgba(255, 85, 0, 0.9), 0.910832911em -0.2933455965em 7px rgba(255, 26, 0, 0.9), -0.3241684948em -0.0726843078em 7px rgba(255, 251, 0, 0.9), 1.5501021534em 0.1200401465em 7px rgba(21, 255, 0, 0.9), 1.1219963327em -0.4888277585em 7px rgba(242, 0, 255, 0.9), 1.839104443em 1.360433456em 7px rgba(0, 213, 255, 0.9), 2.373142118em 2.4720652415em 7px rgba(255, 0, 106, 0.9), -0.2195623125em 0.0897686503em 7px rgba(255, 0, 136, 0.9), 1.1525833866em 1.9316539128em 7px rgba(89, 0, 255, 0.9), 1.4005741933em 2.2759900837em 7px rgba(0, 145, 255, 0.9), 0.0802297036em 0.585438313em 7px rgba(0, 255, 247, 0.9), 1.5402042377em 0.7270363724em 7px rgba(255, 0, 72, 0.9), 1.9972630881em 0.7470522426em 7px rgba(13, 0, 255, 0.9), 0.6522102413em 0.5168901156em 7px rgba(255, 0, 153, 0.9), 1.3677007113em 1.2967438511em 7px rgba(0, 60, 255, 0.9), 1.9005631331em 2.3697849535em 7px rgba(0, 255, 26, 0.9), -0.4366393024em 0.6280607964em 7px rgba(255, 191, 0, 0.9), -0.0057531807em -0.4367956151em 7px rgba(0, 255, 200, 0.9), 0.218506913em 0.6498661065em 7px rgba(255, 162, 0, 0.9), -0.030048162em 1.5643441538em 7px rgba(94, 0, 255, 0.9), 1.6377248341em 2.4155370341em 7px rgba(255, 13, 0, 0.9), 0.9142801517em 1.7736845269em 7px rgba(115, 255, 0, 0.9), 0.5446960204em 0.2847520568em 7px rgba(0, 251, 255, 0.9), 1.7360478846em 0.5628325981em 7px rgba(0, 162, 255, 0.9), 1.3055856567em 0.7655478494em 7px rgba(251, 255, 0, 0.9), -0.1516079352em 1.0647047016em 7px rgba(255, 0, 81, 0.9), 0.0786997814em 1.8058371122em 7px rgba(255, 0, 123, 0.9), 1.5812476739em 1.2919052927em 7px rgba(0, 255, 149, 0.9), 1.9781625483em 1.9489253496em 7px rgba(0, 55, 255, 0.9), 0.7041329728em 1.5003276002em 7px rgba(255, 0, 119, 0.9), 2.3709081145em 0.6060951362em 7px rgba(0, 47, 255, 0.9), -0.2965796449em 1.3227383261em 7px rgba(102, 0, 255, 0.9), -0.16600529em -0.1099224187em 7px rgba(0, 255, 21, 0.9), 1.9121173897em 2.4557568896em 7px rgba(106, 255, 0, 0.9), -0.3859015693em 0.3477924288em 7px rgba(255, 0, 208, 0.9), -0.4339295868em 0.2783541585em 7px rgba(255, 38, 0, 0.9);
-        animation-duration: 43s;
-        animation-delay: -32s;
-      }
-      @keyframes move {
-        from {
-          transform: rotate(0deg) scale(12) translateX(-20px);
-        }
-        to {
-          transform: rotate(360deg) scale(18) translateX(20px);
-        }
-      }  */
+
+
 .hero{
     width: 100%;
     height: 100vh;
@@ -91,10 +57,10 @@ body{
 
 nav {
     background-color: black;
+    opacity: 0.6;
     border-width: 1px;
     border-color: #fff;
     border-bottom-style: groove;
-    border-top-style: groove;
     width: 100%;
     position: absolute;
     top: 0;
@@ -109,12 +75,13 @@ nav ul li {
     list-style: none;
     display: inline-block;
     margin-left: 5vmin;
+    
 }
 
 nav ul li a:hover {
 
      -webkit-text-stroke-color: #ff0000;
-     -webkit-text-stroke-width: 3px;
+     -webkit-text-stroke-width: 2px;
     /* Non funziona il cambio di colore, centra sicuramente con il click
     perchè prima di averci cliccato si illuminavano di rosso, dopo no */
 }  
@@ -123,7 +90,9 @@ nav ul li a {
     text-decoration: none;
     font-weight:bold;
     color: #fff;
-    font-size: 2vmin;
+    font-size: 3vmin;
+    
+    
 }
 
 .content {
