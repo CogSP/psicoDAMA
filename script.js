@@ -866,6 +866,7 @@ modal_container.classList.add('show');
    const pwd2 = document.getElementById("cpwd");
 
    pwd1.addEventListener("input", (event)=>{
+
    var xmlhttp = new XMLHttpRequest();
    xmlhttp.onreadystatechange = () => {
     if(xmlhttp.readyState === 4) {
@@ -892,7 +893,36 @@ modal_container.classList.add('show');
 
    })
 
+   usr1.addEventListener("input", (event)=>{
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = () => {
+     if(xmlhttp.readyState === 4) {
+         if(xmlhttp.status === 200){
+             testo = xmlhttp.responseText;
+             console.log("Risposta:" + testo);
+             if(testo == "no"){
+                 usr1.setCustomValidity("Inserire username/password corretti!");
+                 pwd1.setCustomValidity("Inserire username/password corretti!");
+             }
+             else{
+                 usr1.setCustomValidity("");
+                 pwd1.setCustomValidity("");
+             }
+         }
+     }
+    }
+ 
+ 
+    xmlhttp.open("GET",`popup.php?usr=${usr1.value}&pwd=${pwd1.value}`, true );
+    xmlhttp.send();
+ 
+ 
+ 
+    })
+
    pwd2.addEventListener("input", (event)=>{
+    
    var xmlhttp = new XMLHttpRequest();
    xmlhttp.onreadystatechange = () => {
     if(xmlhttp.readyState === 4) {
@@ -914,10 +944,38 @@ modal_container.classList.add('show');
    xmlhttp.send();
    })
 
+   usr2.addEventListener("input", (event)=>{
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = () => {
+     if(xmlhttp.readyState === 4) {
+         if(xmlhttp.status === 200){
+             testo = xmlhttp.responseText;
+                 console.log("Risposta:" + testo);
+    
+                 if(testo == "no"){
+                     usr2.setCustomValidity("Inserire username/password corretti!");
+                     pwd2.setCustomValidity("Inserire username/password corretti!");
+                 }
+                 else{
+                     usr2.setCustomValidity("");
+                     pwd2.setCustomValidity("");
+                 }
+         }
+     }
+    }
+    xmlhttp.open("GET",`popup.php?usr=${usr2.value}&pwd=${pwd2.value}`, true );
+    xmlhttp.send();
+    })
+
 close.addEventListener("submit", (event)=>{
     event.preventDefault();
     testo1 = usr1.value;
     testo2 = usr2.value;
+    if(testo1 == testo2){
+        alert("Inserire due utenti diversi!!!");
+        return;
+    }
     whiteTurnText.textContent = `${testo1} (WHITE)`;
     blackTurnText.textContent = `${testo2} (BLACK)`;
     whiteTurnText.setAttribute("name", testo1 );
