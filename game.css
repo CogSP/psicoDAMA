@@ -8,7 +8,7 @@
 }
 
 
-@media (((min-height: 650px) ) and (min-width: 700px)) {
+@media (((min-height: 700px) ) and (min-width: 700px)) {
 
 
 	/* body {
@@ -405,7 +405,7 @@
 
 
 /*HARDCODATO PER NEST HUB E TUTTI QUEI DISPOSITIVI BASSI E LARGHI (ES. 1000 X 600)*/
-@media ((max-height: 650px) and (min-width: 700px)){
+@media ((max-height: 700px) and (min-width: 700px)){
 
 	/* CSS RESET */
 	* {
@@ -649,14 +649,7 @@
 		border-radius: 0.3125rem;
 		padding: 1.875rem 3.125rem;
 		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
-		
-
-		/* aggiunta ora */
-		
-		width: 50%;
-		
-		/* aggiunta ora */
-		
+		width: 60%;
 		max-width: 100%;
 		text-align: center;
 	}
@@ -1242,10 +1235,16 @@
 
 }
 
-
-/* largo */ 
 @media (orientation: portrait) {
 	table {
 		height: 40%;
 	}
+}
+
+@media (min-aspect-ratio: 16/5) {
+
+
+	table {
+		width: 25%;
+	} 
 }
