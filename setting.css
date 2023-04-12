@@ -9,17 +9,19 @@
 }
 
 
-.rank {
-    text-align: center;
-    color: goldenrod;
-    font-weight: 600;
-    transition: 0.5s;
-}
+  h1{
+      text-align: center;
+      color: goldenrod;
+      font-weight: 600;
+      transition: 0.5s;
+  }
 
-.rank:hover {
-    -webkit-text-stroke: 2px goldenrod;
-    color: transparent;
-}
+  h1:hover {
+      -webkit-text-stroke: 2px goldenrod;
+      color: transparent;
+  }
+
+
 
 
 
@@ -37,7 +39,6 @@
 nav {
   background-color: black;
   opacity: 0.6;
-  height: 45%;
   border-width: 1px;
   border-color: #fff;
   border-bottom-style: groove;
@@ -51,14 +52,11 @@ nav {
   justify-content: flex-end; /*I tried space-between but the 4 options were not in the upper right corner*/
 }
 
-nav ul {
-  margin-top: 1.2%; 
-}
-
 nav ul li {
   list-style: none;
   display: inline-block;
   margin-left: 5vmin;
+  
 }
 
 nav ul li a:hover {
@@ -67,7 +65,6 @@ nav ul li a:hover {
    -webkit-text-stroke-width: 2px;
   /* Non funziona il cambio di colore, centra sicuramente con il click
   perchè prima di averci cliccato si illuminavano di rosso, dopo no */
-  color: white;
 }  
 
 nav ul li a {
