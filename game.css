@@ -1239,6 +1239,10 @@
 	table {
 		height: 40%;
 	}
+
+	.desktop {
+		min-width: 400px;
+	}
 }
 
 @media (min-aspect-ratio: 16/5) {
