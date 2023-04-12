@@ -8,7 +8,7 @@
 }
 
 
-@media (((min-height: 700px) ) and (min-width: 700px)) {
+@media (((min-height: 650px) ) and (min-width: 700px)) {
 
 
 	/* body {
@@ -405,7 +405,7 @@
 
 
 /*HARDCODATO PER NEST HUB E TUTTI QUEI DISPOSITIVI BASSI E LARGHI (ES. 1000 X 600)*/
-@media ((max-height: 700px) and (min-width: 700px)){
+@media ((max-height: 650px) and (min-width: 700px)){
 
 	/* CSS RESET */
 	* {
@@ -1242,3 +1242,10 @@
 
 }
 
+
+/* largo */ 
+@media (orientation: portrait) {
+	table {
+		height: 40%;
+	}
+}
