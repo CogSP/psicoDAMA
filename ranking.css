@@ -11,13 +11,13 @@
 
 .rank {
     text-align: center;
-    color: goldenrod;
+    color: rgb(255, 255, 255);
     font-weight: 600;
     transition: 0.5s;
 }
 
 .rank:hover {
-    -webkit-text-stroke: 2px goldenrod;
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
     color: transparent;
 }
 

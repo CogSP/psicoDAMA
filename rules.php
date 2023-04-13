@@ -37,6 +37,7 @@
     </ul>
 </nav>
 
+
 <div class="content">
     <h1>How to Play Checkers</h1>
 

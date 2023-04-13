@@ -7,6 +7,20 @@
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
 <body>
+<div class="hero">
+ 
+ <nav> 
+     <ul>
+         <li><a href="index.php">Home</a></li>
+         <li><a href="game.php">Fight!</a></li>
+         <li><a href="profile.php">Profile</a></li>
+         <li><a href="rules.php">Rules</a></li>
+         <li><a href="settings.php">Settings</a></li>
+         <li><a href="ranking.php">Ranking</a></li>
+     </ul>
+ </nav>
+
+</div>
 <?php
     
    
@@ -28,6 +42,7 @@
     pg_close($dbconnection);
     echo 
     "
+    <div class = 'the_form'>
     <div class='container'>
     <div class='title'>$fullname, you are registered!</div>
     <div class='content'>
@@ -49,7 +64,7 @@
       </form>
     </div>
   </div>
-
+</div>
 
     
     "

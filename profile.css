@@ -65,29 +65,6 @@ nav ul li a {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .the_form {
   height: 70%;
   display: flex;
@@ -137,6 +114,27 @@ form .input-box span.details{
   border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
+
+.user-details .input-box button{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc; 
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu {
+  width: 100%;
+  color: rgb(240,240,240);
+}
+.dropdown-item {
+  color:black;
+}
+
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
   border-color: #b40000;
@@ -165,15 +163,7 @@ form .input-box span.details{
   border: 5px solid transparent;
   transition: all 0.3s ease;
 }
- #dot-1:checked ~ .category label .one,
- #dot-2:checked ~ .category label .two,
- #dot-3:checked ~ .category label .three{
-   background: #b40000;
-   border-color: lightgrey;
- }
- form input[type="radio"]{
-   display: none;
- }
+
  form .button{
    height: 45px;
    margin: 35px 0
@@ -221,3 +211,5 @@ form .user-details .input-box{
     flex-direction: column;
   }
   }
+
+
