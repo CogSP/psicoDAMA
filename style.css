@@ -49,6 +49,7 @@ nav ul li a:hover {
      -webkit-text-stroke-width: 2px;
     /* Non funziona il cambio di colore, centra sicuramente con il click
     perchè prima di averci cliccato si illuminavano di rosso, dopo no */
+    color: white;
 }  
 
 nav ul li a {

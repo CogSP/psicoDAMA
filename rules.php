@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="background.css">
   
   
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  
+   -->
   
     <title>Rules</title>
 </head>
@@ -52,24 +52,28 @@
 According to a 2020 survey, 77% of adults in the U.S. think checkers is a game of skill rather than luck. So do you need to be a master of strategy to win a checkers game? Most would say "yes". Here are some tips on how to play and win.
 
 <h2>Our Version</h2>
+<br />
 
 <p>Checkers is a two-person game. The standard checkerboard has 12 checkers per player. 
 White go first. If this isn't your first match, typically the person who won the last game is the one to go first, so the one to take the white.  
 At the start, there are three rows of four checkers each, placed only in dark squares; the white spaces will be always empty.
 </p>
+<br />
 
 <h2>Moves to keep in mind</h2>
+<br />
 
 <p>  
 There are three important checker move rules:
-
 <ol>
+<br />
     <ul><span>1.</span> Checkers can only move diagonally on dark squares.</ul>
     <ul><span>2.</span> At the start of the game, checkers can only move forward, meaning toward the opposite player's side.</ul>
     <ul><span>3.</span> Checkers may move up and down when they become “kings” by reaching the last row of the opposite side.</ul>
 </ol>
 
 </p>
+<br />
 
 <p>
 Move your checker forward diagonally, always staying on the dark squares. You are only allowed to move one checker per turn, moving one space at a time unless jumping. After the first player takes their turn the next player goes, also moving their checker forward diagonally.
@@ -77,14 +81,16 @@ Remove your opponent's checkers from the board by jumping them if your checker i
 If the space you land on after jumping your opponent's checker puts you in position to jump another of their checkers, you can make a “double jump” in one move. A double jump is when two jumps are made consecutively within a single turn. 
 As you make your way across the board, try to get to the end of your opponent's side. Once you reach the last row, either stack a captured checker on top of it or flip your checker over. This sets it apart from the other checkers. It is now a king and can move forward or backward diagonally. 
 </p>
-
+<br />
 
 <h2>How do you win the game?</h2>
+<br />
 
 <p>Whoever captures all their opponents' checkers wins. Players continue jumping to capture checkers until one color remains on the board. You can also win checkers if you block your opponent's pieces so they can't make any more moves. </p>
-
+<br />
 
 <h2>What is the best first move in checkers?</h2>
+<br />
 
 <p>According to Quadibloc, “Old Faithful” is the best first move, and one of the most popular. It involves moving the black checker from square 11 to square 15, or the second from the left diagonally to the right. 
 
@@ -93,6 +99,7 @@ For the second player (usually white or red), the best first move is to move fro
 Another popular counter to the 11-15 opening move is the 22-17. </p>
 
 <h2>Strategies for checkers</h2>
+<br />
 
 <p>
 
@@ -105,9 +112,9 @@ Another popular counter to the 11-15 opening move is the 22-17. </p>
 </ol>
 
 </p>
-
+<br />
 <h2>History of checkers</h2>
-
+<br />
 <p>Checkers is one of the world's oldest games and has been adapted over the years to form the modern game we know today. Also known as draughts in the United Kingdom and Russia, checkers is played by moving different colored pieces across a board to capture your player's pieces. The two-player game is played on a checkerboard — a wooden or plastic square with checkered squares.
 
 The earliest version of checkers was found in the ancient Mesopotamian city of Ur, now in modern-day Iraq, which archeologists found, and carbon dated to 3,000 B.C. There's also mention of a version of checkers called Alquerque in Ancient Egypt and as mentioned by Homer and Plato in the Classical period in Ancient Greece, New World Encyclopedia writes.
