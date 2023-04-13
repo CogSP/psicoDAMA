@@ -885,7 +885,6 @@ modal_container.classList.add('show');
     }
    }
 
-
    xmlhttp.open("GET",`popup.php?usr=${usr1.value}&pwd=${pwd1.value}`, true );
    xmlhttp.send();
 
@@ -978,6 +977,8 @@ close.addEventListener("submit", (event)=>{
     }
     whiteTurnText.textContent = `${testo1} (WHITE)`;
     blackTurnText.textContent = `${testo2} (BLACK)`;
+    whiteTurnText.style.fontFamily= "Luckiest Guy";
+    blackTurnText.style.fontFamily= "Luckiest Guy"
     whiteTurnText.setAttribute("name", testo1 );
     blackTurnText.setAttribute("name", testo2);
     modal_container.classList.remove('show');
@@ -987,7 +988,7 @@ close.addEventListener("submit", (event)=>{
         var parent = document.getElementById("body");
         var child = document.getElementById("modal-container-id");
         parent.removeChild(child);
-    }, 1000)
+    }, 1000) //il timer serve a far vedere la transizione css
 
 });
 
@@ -996,3 +997,4 @@ close.addEventListener("submit", (event)=>{
 
 //starting point: the cycle begins once the page has loaded
 givePiecesEventListeners();
+
