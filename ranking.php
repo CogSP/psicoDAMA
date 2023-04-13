@@ -33,7 +33,7 @@
     <div class = 'container mt-3'>
     <h1 class = "rank">RANKING</h1>
     <table class = 'table table-dark table-striped'>
-        <tr class = 'table-warning'><td>Posizione</td><td>Username</td><td>Vittorie</td><td>Email</td></tr>
+        <tr class = 'table-warning'><td>Posizione</td><td>Username</td><td>Vittorie</td></tr>
         <?php
             $dbconnection = pg_connect("host = localhost dbname = dama user = postgres password = kub3tt0SQL") or die('Could not connect');
             $query = 
@@ -47,7 +47,7 @@
             while($row = pg_fetch_assoc($result)){
                 echo 
                 "
-                    <tr><td>$index</td><td>{$row['username']}</td><td>{$row['vittorie']}</td><td>{$row['email']}</td></tr>
+                    <tr><td>$index</td><td>{$row['username']}</td><td>{$row['vittorie']}</td></tr>
                 ";
                 $index = $index + 1;
             }
