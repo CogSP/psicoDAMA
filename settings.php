@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +10,7 @@
     <title>Settings</title>
     <link rel="stylesheet" href="background.css">
     <link rel="stylesheet" href="profile.css">
-    <script defer source = "settings.js"></script>
+    <script defer src = "settings.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -54,9 +58,9 @@ Settings:
                     Change Theme
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style = "background-color: rgb(240,240,240);">
-                    <li><a id = "ct-std" class="dropdown-item active" href="#" style = "color:black;" onclick="" >Standard</a></li>
-                    <li><a id="ct-dark" class="dropdown-item" href="#" style = "color:black;" onclick = "">Dark</a></li>
-                    <li><a id= "ct-trop" class="dropdown-item" href="#" style = "color:black;" onclick = "">Tropical</a></li>
+                    <li id="li1"><a id = "ct-std" class="dropdown-item active"  style = "color:black;" >Standard</a></li>
+                    <li id="li2"><a id="ct-dark" class="dropdown-item"  style = "color:black;" >Dark</a></li>
+                    <li id="li3"><a id= "ct-trop" class="dropdown-item"  style = "color:black;">Tropical</a></li>
                 </ul>
             </div>
         </div>

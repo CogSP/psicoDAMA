@@ -1,3 +1,8 @@
+<?php 
+session_start();
+
+?>
+
 <?php
 $q = $_REQUEST['q'];
 $dbconnection = pg_connect("host = localhost dbname = dama user = postgres password = kub3tt0SQL") or die('Could not connect');

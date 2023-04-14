@@ -1,6 +1,35 @@
 /* GAME STATE DATA: declaration of the board, with all the pieces and their
 html's ids */
 
+xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = () => {
+            if(xmlhttp.readyState === 4) {
+                if(xmlhttp.status === 200){
+
+                    testo = xmlhttp.responseText;
+                    console.log("risposta: " + testo);
+                    if(testo == "std"){
+                        document.getElementById("foglioback").href = "background.css";
+                        document.getElementById("fogliogame").href = "game.css";
+                    }
+                    else if(testo == "dark"){
+                        document.getElementById("foglioback").href = "background_dark.css";
+                        document.getElementById("fogliogame").href = "game_dark.css";
+                    }
+                    else if(testo == "trop"){
+                        document.getElementById("foglioback").href = "background_trop.css";
+                        document.getElementById("fogliogame").href = "game_trop.css";
+                    }
+                    else{
+                        console.log("c'è un problema");
+                    }
+                }
+            }
+           }
+        xmlhttp.open("GET",`theme.php`, true);
+        xmlhttp.send();
+
+
 const board = [ /*64 item array*/
     null, 0, null, 1, null, 2, null, 3,
     4, null, 5, null, 6, null, 7, null,

@@ -1,4 +1,12 @@
-
+<?php 
+session_start();
+if(!isset($_SESSION["theme"])){
+$_SESSION["theme"] = "std";
+}
+if(!isset($_SESSION["mode"])){
+$_SESSION["mode"] = "std";
+}
+?>
 <!DOCTYPE html>
 
 <html lang="en">

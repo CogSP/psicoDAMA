@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 
 <?php
 $usr = $_REQUEST['q'];
