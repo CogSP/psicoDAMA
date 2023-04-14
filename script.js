@@ -1,6 +1,9 @@
 /* GAME STATE DATA: declaration of the board, with all the pieces and their
 html's ids */
 
+var colore_bianchi  
+var colore_neri
+
 xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = () => {
             if(xmlhttp.readyState === 4) {
@@ -11,14 +14,22 @@ xmlhttp = new XMLHttpRequest();
                     if(testo == "std"){
                         document.getElementById("foglioback").href = "background.css";
                         document.getElementById("fogliogame").href = "game.css";
+                        colore_bianchi = "rgb(252, 249, 249)"
+                        colore_neri = "black"
                     }
                     else if(testo == "dark"){
                         document.getElementById("foglioback").href = "background_dark.css";
                         document.getElementById("fogliogame").href = "game_dark.css";
+
+                        colore_bianchi = "rgb(252, 249, 249)"
+                        colore_neri = "darkgrey"
                     }
                     else if(testo == "trop"){
-                        document.getElementById("foglioback").href = "background_trop.css";
+                        document.getElementById("foglioback").href = "background_tropical.css";
                         document.getElementById("fogliogame").href = "game_trop.css";
+
+                        colore_bianchi = "rgb(188, 199, 32);"
+                        colore_neri = "rgb(53, 179, 37);"
                     }
                     else{
                         console.log("c'è un problema");
@@ -146,11 +157,11 @@ function resetBorders() {
         if (screen.width >= 350 && screen.height >= 700) {
 
             if (turn){
-                playerPieces[i].style.background = "rgb(252, 249, 249)";
+                playerPieces[i].style.background = colore_bianchi;
             }
 
             else {
-                playerPieces[i].style.background = "black";
+                playerPieces[i].style.background = colore_neri;
             }
 
             playerPieces[i].style.border = "0.1em solid #808080";
@@ -159,11 +170,11 @@ function resetBorders() {
         else {
             playerPieces[i].style.border = "0";
             if (turn) {
-                playerPieces[i].style.background = "rgb(252, 249, 249)";
+                playerPieces[i].style.background = colore_bianchi;
             }
             
             else {
-                playerPieces[i].style.background = "black";
+                playerPieces[i].style.background = colore_neri
             }
         }
     } 
@@ -517,11 +528,11 @@ function givePieceBorder() {
             if (screen.width >= 350 && screen.height >= 700) {
                 
                 if (turn) {
-                   document.getElementById(selectedPiece.pieceId).style.background = "rgb(252, 249, 249)"
+                   document.getElementById(selectedPiece.pieceId).style.background = colore_bianchi;
                 }
 
                 else {
-                   document.getElementById(selectedPiece.pieceId).style.background = "black"
+                   document.getElementById(selectedPiece.pieceId).style.background = colore_neri;
                 }
 
                 document.getElementById(selectedPiece.pieceId).style.border = "0.3em solid green"; //it's selected
@@ -589,7 +600,9 @@ function makeMove(number) {
         if (selectedPiece.isKing) {                                     // these are two classes: white-piece and king
            
             if (screen.width >= 350 && screen.height >= 700) {
-                cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
+                // cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
+
+                cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fas fa-tree-palm fa-flip"></i></p>`;
             }
 
             else {
