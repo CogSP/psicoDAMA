@@ -106,15 +106,20 @@ let selectedPiece = {
 //piece is clicked, will invoke the function "getPlayerPieces"
 function givePiecesEventListeners() {
 
-
     if (turn) {
         //console.log("white's turn");
+        
         for (let i = 0; i < whitesPieces.length; i++) {
+            blacksPieces[i].classList.remove("turno");
+            whitesPieces[i].classList.add("turno");
             whitesPieces[i].addEventListener("click", getPlayerPieces);
         }
     } else {
+        
         //console.log("black's turn");
         for (let i = 0; i < blacksPieces.length; i++) {
+            whitesPieces[i].classList.remove("turno");
+            blacksPieces[i].classList.add("turno");
             blacksPieces[i].addEventListener("click", getPlayerPieces);
         }
     }
@@ -600,9 +605,7 @@ function makeMove(number) {
         if (selectedPiece.isKing) {                                     // these are two classes: white-piece and king
            
             if (screen.width >= 350 && screen.height >= 700) {
-                // cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
-
-                cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fas fa-tree-palm fa-flip"></i></p>`;
+                cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
             }
 
             else {

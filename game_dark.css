@@ -7,6 +7,19 @@
 	
 }
 
+.white-piece.turno:hover {
+	background-color: orange;
+	animation-name: become_white_king;
+	animation-iteration-count: infinite;
+	animation-duration: 1s;
+}
+
+.black-piece.turno:hover {
+	background-color: purple;
+	animation-name: become_black_king;
+	animation-iteration-count: infinite;
+	animation-duration: 1s;
+}
 
 @media (((min-height: 700px) ) and (min-width: 700px)) {
 
@@ -909,6 +922,13 @@
 		margin: 25%;
 		border: 0.1em solid #808080;
 		border-radius: 50%;
+	}
+
+	.white-piece:hover {
+		background-color: orange;
+		animation-name: become_white_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
 	}
 
 	.black-piece {
