@@ -23,12 +23,14 @@ username.addEventListener("input", (event)=>{
     xmlhttp.onreadystatechange = () => {
         if(xmlhttp.readyState === 4) {
             if(xmlhttp.status === 200) {
-                testo = xmlhttp.responseText;
-                console.log("Risposta:" + testo);
+                testo = xmlhttp.responseText.trim();
+                console.log(testo);
                 if(testo == "no"){
+                    console.log("settato a no")
                     username.setCustomValidity("Username già in utilizzo!");
                 }
                 else{
+                    console.log("settato a si")
                     username.setCustomValidity("");
                 }
                 

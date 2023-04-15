@@ -9,7 +9,7 @@ xmlhttp = new XMLHttpRequest();
             if(xmlhttp.readyState === 4) {
                 if(xmlhttp.status === 200){
 
-                    testo = xmlhttp.responseText;
+                    testo = xmlhttp.responseText.trim();
                     console.log("risposta: " + testo);
                     if(testo == "std"){
                         document.getElementById("foglioback").href = "background.css";
@@ -63,8 +63,10 @@ let findPiece = function(pieceId) { //La funzione restituisce, dato l'id html de
 // references to the web html page (DOM references)
 const cells = document.querySelectorAll("td"); /* list of all the "td"s in the  html file*/
 const pieces = document.querySelectorAll("p");
-let whitesPieces = document.querySelectorAll(".white-piece"); /* does it work? */
-let blacksPieces = document.querySelectorAll(".black-piece"); /* does it work? */
+let whitesPieces = document.querySelectorAll(".white-piece"); 
+for(let i = 0; i < whitesPieces.length;i++)
+            whitesPieces[i].classList.add('turno');
+let blacksPieces = document.querySelectorAll(".black-piece"); 
 const whiteTurnText = document.getElementById("wtt");
 const blackTurnText = document.getElementById("btt");
 const divider = document.querySelector("#divider")
@@ -110,16 +112,16 @@ function givePiecesEventListeners() {
         //console.log("white's turn");
         
         for (let i = 0; i < whitesPieces.length; i++) {
-            blacksPieces[i].classList.remove("turno");
-            whitesPieces[i].classList.add("turno");
+            // blacksPieces[i].classList.remove('turno');
+            // whitesPieces[i].classList.add('turno');
             whitesPieces[i].addEventListener("click", getPlayerPieces);
         }
     } else {
         
         //console.log("black's turn");
         for (let i = 0; i < blacksPieces.length; i++) {
-            whitesPieces[i].classList.remove("turno");
-            blacksPieces[i].classList.add("turno");
+            // whitesPieces[i].classList.remove("turno");
+            // blacksPieces[i].classList.add("turno");
             blacksPieces[i].addEventListener("click", getPlayerPieces);
         }
     }
@@ -885,8 +887,16 @@ function changePlayer() {
         turn = false;
         whiteTurnText.style.color = "lightGrey";
         blackTurnText.style.color = "black";
+        for(let i = 0; i < blacksPieces.length;i++)
+            blacksPieces[i].classList.add('turno');
+        for(let i = 0; i < whitesPieces.length;i++)
+            whitesPieces[i].classList.remove('turno');
     } else {
         turn = true;
+        for(let i = 0; i < blacksPieces.length;i++)
+            blacksPieces[i].classList.remove('turno');
+        for(let i = 0; i < whitesPieces.length;i++)
+            whitesPieces[i].classList.add('turno');
         whiteTurnText.style.color = "black";
         blackTurnText.style.color = "lightGrey";
 
@@ -916,7 +926,7 @@ modal_container.classList.add('show');
    xmlhttp.onreadystatechange = () => {
     if(xmlhttp.readyState === 4) {
         if(xmlhttp.status === 200){
-            testo = xmlhttp.responseText;
+            testo = xmlhttp.responseText.trim();
             console.log("Risposta:" + testo);
             if(testo == "no"){
                 usr1.setCustomValidity("Inserire username/password corretti!");
@@ -943,7 +953,7 @@ modal_container.classList.add('show');
     xmlhttp.onreadystatechange = () => {
      if(xmlhttp.readyState === 4) {
          if(xmlhttp.status === 200){
-             testo = xmlhttp.responseText;
+             testo = xmlhttp.responseText.trim();
              console.log("Risposta:" + testo);
              if(testo == "no"){
                  usr1.setCustomValidity("Inserire username/password corretti!");
@@ -971,7 +981,7 @@ modal_container.classList.add('show');
    xmlhttp.onreadystatechange = () => {
     if(xmlhttp.readyState === 4) {
         if(xmlhttp.status === 200){
-            testo = xmlhttp.responseText;
+            testo = xmlhttp.responseText.trim();
                 console.log("Risposta:" + testo);
                 if(testo == "no"){
                     usr2.setCustomValidity("Inserire username/password corretti!");
@@ -994,7 +1004,7 @@ modal_container.classList.add('show');
     xmlhttp.onreadystatechange = () => {
      if(xmlhttp.readyState === 4) {
          if(xmlhttp.status === 200){
-             testo = xmlhttp.responseText;
+             testo = xmlhttp.responseText.trim();
                  console.log("Risposta:" + testo);
     
                  if(testo == "no"){
