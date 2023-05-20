@@ -12,8 +12,8 @@ session_start();
     <link id = "foglioback" rel="stylesheet" href="background.css">
     <!-- <link rel = "stylesheet" href = "back.css"> -->
     <script src="https://kit.fontawesome.com/cd9a86b4ff.js" crossorigin="anonymous"></script> <!-- serve per le corone-->
-    <script defer src="script.js"></script>
-    <script defer src ="profile.js"></script>
+    <script  defer src="script.js"></script>
+    <script  defer src ="profile.js"></script>
 
     <title>Let's FIGHT!</title>
 </head>

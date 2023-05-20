@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="background.css">
   
   
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-   -->
-  
     <title>Rules</title>
 </head>
 <div class="bg"></div>
@@ -21,9 +17,7 @@
 
 <div class="hero">
 
-<!-- <video autoplay loop muted plays-inline class="back-video">
-    <source src="video.mp4" type="video/mp4">
-</video> -->
+
 
 <nav> <!-- nav is a section that contains navigations link (to the same page or other) -->
     <ul>
