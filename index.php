@@ -28,8 +28,9 @@ $_SESSION["mode"] = "std";
 
     <div class="hero">
 
-        <nav> <!-- nav is a section that contains navigations link (to the same page or other) -->
-            <ul>
+        <nav> 
+            <ul
+            >
                 <li><a href="index.php">Home</a></li>
                 <li><a href="game.php">Fight!</a></li>
                 <li><a href="profile.php">Profile</a></li>

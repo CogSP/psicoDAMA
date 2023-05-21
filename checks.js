@@ -9,7 +9,7 @@ const fullname = document.getElementById("fullname")
 
 conferma.addEventListener("input",(event)=>{
   if(password.value!= conferma.value){
-    conferma.setCustomValidity("passwords need to match!")
+    conferma.setCustomValidity("Le password non coincidono!")
   }
   else{
     conferma.setCustomValidity(""); //forse non serve

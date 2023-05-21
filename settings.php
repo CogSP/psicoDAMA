@@ -29,7 +29,7 @@ Settings:
 <body>
 <div class="hero">
 <nav> 
-    <ul>
+    <ul style="margin-top: 1.7%;">
         <li><a href="index.php">Home</a></li>
         <li><a href="game.php">Fight!</a></li>
         <li><a href="profile.php">Profile</a></li>
