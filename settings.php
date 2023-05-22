@@ -65,21 +65,7 @@ Settings:
         </div>
     </div>
 </div>
-<!-- <div class="input-box">
-    <div class="row">
-        <div class="col">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style = "background-color:rgb(240,240,240); color:black;">
-                    Change Game Mode
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style = "background-color: rgb(240,240,240);">
-                    <li><a id = "gm-std" class="dropdown-item active" href="#" style = "color:black;">Standard</a></li>
-                    <li><a id = "gm-alt" class="dropdown-item" href="#" style = "color:black;" >Alternative</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div> -->
+
           <div class="input-box">
             <a href="cambiapwd.php">
             <input id = "cambiapwd" name = "cambiapwd" type= "button" value = "Cambia password" >

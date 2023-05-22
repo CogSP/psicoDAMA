@@ -255,6 +255,7 @@
 
 	}
 
+	/*definisce l'animazione become_black_king*/
 	@keyframes become_black_king {
 
 		0% {
@@ -375,10 +376,9 @@
 	}
 }
 
+/*bassi e larghi*/
+@media ((max-height: 700px) and (min-width: 700px)) {
 
-@media ((max-height: 700px) and (min-width: 700px)){
-
-	/* CSS RESET */
 	* {
 		margin: 0;
 		padding: 0;
@@ -744,10 +744,8 @@
 
 
 
-
 @media (max-width: 700px) {
 
-	/* CSS RESET */
 	* {
 		margin: 0;
 		padding: 0;
@@ -1108,7 +1106,7 @@
 }
 
 
-
+/*senza corona*/
 @media (max-width: 350px), (max-height: 700px) {
 	
 	i {
