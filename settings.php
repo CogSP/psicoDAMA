@@ -65,7 +65,7 @@ Settings:
         </div>
     </div>
 </div>
-<div class="input-box">
+<!-- <div class="input-box">
     <div class="row">
         <div class="col">
             <div class="dropdown">
@@ -79,7 +79,7 @@ Settings:
             </div>
         </div>
     </div>
-</div>
+</div> -->
           <div class="input-box">
             <a href="cambiapwd.php">
             <input id = "cambiapwd" name = "cambiapwd" type= "button" value = "Cambia password" >
