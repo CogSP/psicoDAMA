@@ -8,6 +8,6 @@ We used HTML + CSS + Javascript with Bootstrap for the front-end, PHP for the ba
 
 
 ## How to install and run the project
-Just clone the repo and run it locally ;)
+Having PHP Installed, serve the project from index.php
 
 

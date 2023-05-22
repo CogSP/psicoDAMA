@@ -1,5 +1,4 @@
-//Qui ci sono i check (per ora solo il controllo che la conferma è uguale
-//alla password) del form di registrazione
+//Qui ci sono i check del form di registrazione
 
 const form = document.querySelector("form");
 const password = document.getElementById("pwd");
@@ -12,7 +11,7 @@ conferma.addEventListener("input",(event)=>{
     conferma.setCustomValidity("Le password non coincidono!")
   }
   else{
-    conferma.setCustomValidity(""); //forse non serve
+    conferma.setCustomValidity(""); 
     //tutto ok, il form viene mandato
   }
 });
